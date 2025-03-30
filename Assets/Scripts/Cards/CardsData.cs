@@ -10,6 +10,10 @@ public class CardsData : ScriptableObject
     public CardType cardType;
     public string cardDescription;
     public Sprite cardImage;
+    public Vector3 cardSpawn;
+    public Vector3 discardPile;
+
+    public TransformDataPosition cardTransform;
 
     public enum CardType
     {
