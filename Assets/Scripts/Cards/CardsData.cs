@@ -1,19 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
 public class CardsData : ScriptableObject
 {
-    public string cardName;
-    public int cardShopCost;
-    public CardType cardType;
-    public string cardDescription;
-    public Sprite cardImage;
-    public Vector3 cardSpawn;
-    public Vector3 discardPile;
+    [SerializeField] 
+    private string cardName;
+    [SerializeField] 
+    private int cardShopCost;
+    [SerializeField] 
+    private CardType cardType;
+    [SerializeField] 
+    private string cardDescription;
+    [SerializeField] 
+    private Sprite cardImage;
+    [SerializeField] 
+    private Vector3 cardSpawn;
+    [SerializeField] 
+    private TransformAndRotation cardTransformSelect;
+    [SerializeField]
+    private TransformAndRotation discardPile;
 
-    public TransformDataPosition cardTransform;
+    public string CardName => cardName;
+    public int CardShopCost => cardShopCost;
+    public CardType CardTypeProperty => cardType;
+    public string CardDescription => cardDescription;
+    public Sprite CardImage => cardImage;
+    public Vector3 CardSpawn => cardSpawn;
+    public TransformAndRotation DiscardPile => discardPile;
+    public TransformAndRotation CardTransformSelect => cardTransformSelect;
 
     public enum CardType
     {

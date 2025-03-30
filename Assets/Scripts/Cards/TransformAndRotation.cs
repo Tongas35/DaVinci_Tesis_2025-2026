@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct TransformDataPosition 
+public struct TransformAndRotation 
 {
     public Vector3 position;
-    public Quaternion rotation;
+    public Vector3 rotation;
 
 }

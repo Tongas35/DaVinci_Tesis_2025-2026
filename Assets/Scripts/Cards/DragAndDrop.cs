@@ -3,19 +3,21 @@ using UnityEngine;
 
 public class DragAndDrop
 {
-    private Vector3    _offset;
-    private float      _zCoord;
-    private Camera     _cam;
-    private bool       _isRotating;
-    private Transform  _transform;
-    private Quaternion _originalRotation;
-    private Vector3    _customEulerRotation;
-    private Vector3    _lastPosition;
-    private Vector3    _spawn;
-    private Vector3    _discardPile;
-    private TransformDataPosition _transformData;
+    private Vector3              _offset;
+    private float                _zCoord;
+    private Camera               _cam;
+    private bool                 _isRotating;
+    private bool                 _isDragging;
+    private Transform            _transform;
+    private Quaternion           _originalRotation;
+    private Vector3              _customEulerRotation;
+    private Vector3              _lastPosition;
+    private Vector3              _spawn;
+    private TransformAndRotation _discardPile;
+    private TransformAndRotation _transformData;
+   
 
-    public DragAndDrop(Transform transform, Vector3 customEulerRotation, Vector3 spawn, Vector3 discardPile, TransformDataPosition transformData)
+    public DragAndDrop(Transform transform, Vector3 customEulerRotation, Vector3 spawn, TransformAndRotation discardPile, TransformAndRotation transformData)
     {
         _transform           = transform;
         _cam                 = Camera.main;
@@ -43,13 +45,17 @@ public class DragAndDrop
     /// </summary>
     internal void OnMouseDrag()
     {
-        _transform.position = GetMouseWorldPos() + _offset; // mueve el objeto sin hacer un salto
-        bool isMoving = _transform.position != _lastPosition;
+        if (!_isDragging) 
+        {
+            _transform.position = GetMouseWorldPos() + _offset; // mueve el objeto sin hacer un salto
+            bool isMoving = _transform.position != _lastPosition;
 
-        if (_isRotating && _transform.position.y >= 15 && isMoving) 
-            _transform.rotation = Quaternion.RotateTowards(_transform.rotation, Quaternion.Euler(_customEulerRotation), 300f * Time.deltaTime); // suaviza la rotacion
+            if (_isRotating && _transform.position.y >= 15 && isMoving)  
+                _transform.rotation = Quaternion.RotateTowards(_transform.rotation, Quaternion.Euler(_customEulerRotation), 300f * Time.deltaTime); // suaviza la rotacion
 
-        _lastPosition = _transform.position;
+            _lastPosition = _transform.position;
+
+        }
 
     }
 
@@ -64,16 +70,18 @@ public class DragAndDrop
 
         if (spawnDistance < transformDataPosition)
         {
-            _transform.position = _spawn;
+            _transform.position      = _spawn;
+            _transform.localRotation = _originalRotation;
         }
         else 
         {
-            _transform.position = _transformData.position;
-            _transform.localRotation = _transformData.rotation;
+            _transform.position      = _transformData.position;
+            _transform.localRotation = Quaternion.Euler(_transformData.rotation);
+            _isDragging              = true;
         }
 
-        _transform.localRotation  = _originalRotation;
-        _isRotating               = false;
+        
+        _isRotating = false;
     }
 
     private Vector3 GetMouseWorldPos()

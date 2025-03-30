@@ -17,8 +17,10 @@ MonoBehaviour:
   cardType: 0
   cardDescription: carta roja
   cardImage: {fileID: 0}
-  cardSpawn: {x: 26.05, y: 11.59, z: -37.08}
-  discardPile: {x: 16.86, y: 11.37, z: -43.12}
-  cardTransform:
-    position: {x: -3.5, y: 22.5, z: -30.8}
-    rotation: {x: 0.32314143, y: 0.11522966, z: -0.9384708, w: 0.039676916}
+  cardSpawn: {x: 33.33, y: 23.53, z: -45.34}
+  cardTransformSelect:
+    position: {x: 30.22, y: 26.94, z: -44.17}
+    rotation: {x: 1, y: 312, z: 356}
+  discardPile:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}

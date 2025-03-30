@@ -12,7 +12,7 @@ public class Card : MonoBehaviour
 
     void Start()
     {
-        dragAndDrop = new DragAndDrop(this.transform, customRotation, _card.cardSpawn, _card.discardPile, _card.cardTransform);
+        dragAndDrop = new DragAndDrop(this.transform, customRotation, _card.CardSpawn, _card.DiscardPile, _card.CardTransformSelect);
     }
 
     void OnMouseUp() => dragAndDrop.OnMouseUp();
