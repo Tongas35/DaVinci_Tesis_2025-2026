@@ -10,7 +10,7 @@ public class Deck
         
     }
 
-    public void OnMouseDownDeck() 
+    internal void OnMouseDownDeck() 
     {
         //tengo que pensarlo mejor
     }

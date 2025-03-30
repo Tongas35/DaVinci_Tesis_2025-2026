@@ -15,9 +15,9 @@ public class Card : MonoBehaviour
         dragAndDrop = new DragAndDrop(this.transform, customRotation, _card.CardSpawn, _card.DiscardPile, _card.CardTransformSelect);
     }
 
-    void OnMouseUp() => dragAndDrop.OnMouseUp();
-    void OnMouseDown() => dragAndDrop.OnMouseDown();
+    void OnMouseUp() => dragAndDrop.OnMouseUpCard();
+    void OnMouseDown() => dragAndDrop.OnMouseDownCard();
 
-    void OnMouseDrag() => dragAndDrop.OnMouseDrag();
+    void OnMouseDrag() => dragAndDrop.OnMouseDragCard();
 
 }

@@ -32,7 +32,7 @@ public class DragAndDrop
     /// <summary>
     /// metodo para cuando se hace clic en el objeto
     /// </summary>
-    internal void OnMouseDown()
+    internal void OnMouseDownCard()
     {
         _zCoord           = _cam.WorldToScreenPoint(_transform.position).z; //guarda la Z
         _offset           = _transform.position - GetMouseWorldPos(); 
@@ -43,7 +43,7 @@ public class DragAndDrop
     /// <summary>
     /// metodo para cuando el mouse es arrastrado
     /// </summary>
-    internal void OnMouseDrag()
+    internal void OnMouseDragCard()
     {
         if (!_isDragging) 
         {
@@ -62,7 +62,7 @@ public class DragAndDrop
     /// <summary>
     /// metodo para cuando se suelta el mouse
     /// </summary>
-    internal void OnMouseUp()
+    internal void OnMouseUpCard()
     {
         float spawnDistance         = Vector3.Distance(_spawn, _transform.position);
         float transformDataPosition = Vector3.Distance(_transformData.position, _transform.position);
