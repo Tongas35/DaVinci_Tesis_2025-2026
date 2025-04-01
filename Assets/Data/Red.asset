@@ -10,17 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Red
+  m_Name: red
   m_EditorClassIdentifier: 
-  cardName: Red
-  cardShopCost: 10
+  cardName: 
+  cardShopCost: 0
   cardType: 0
-  cardDescription: carta roja
+  cardDescription: 
   cardImage: {fileID: 0}
-  cardSpawn: {x: 33.33, y: 23.53, z: -45.34}
-  cardTransformSelect:
-    position: {x: 30.22, y: 26.94, z: -44.17}
-    rotation: {x: 1, y: 312, z: 356}
-  discardPile:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
+  cardPosition: 0

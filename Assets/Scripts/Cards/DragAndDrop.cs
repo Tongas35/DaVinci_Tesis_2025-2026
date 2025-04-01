@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DragAndDrop
 {
@@ -7,23 +9,20 @@ public class DragAndDrop
     private float                _zCoord;
     private Camera               _cam;
     private bool                 _isRotating;
-    private bool                 _isDragging;
     private Transform            _transform;
     private Quaternion           _originalRotation;
     private Vector3              _customEulerRotation;
     private Vector3              _lastPosition;
-    private Vector3              _spawn;
-    private TransformAndRotation _discardPile;
-    private TransformAndRotation _transformData;
-   
+    private PositionAndRotation  _hand;
+    private PositionAndRotation  _transformData;
+    
 
-    public DragAndDrop(Transform transform, Vector3 customEulerRotation, Vector3 spawn, TransformAndRotation discardPile, TransformAndRotation transformData)
+    public DragAndDrop(Transform transform, Vector3 customEulerRotation, PositionAndRotation hand, PositionAndRotation transformData)
     {
         _transform           = transform;
         _cam                 = Camera.main;
         _customEulerRotation = customEulerRotation;
-        _spawn               = spawn;
-        _discardPile         = discardPile;
+        _hand                = hand;
         _transformData       = transformData;
        
         
@@ -34,10 +33,12 @@ public class DragAndDrop
     /// </summary>
     internal void OnMouseDownCard()
     {
-        _zCoord           = _cam.WorldToScreenPoint(_transform.position).z; //guarda la Z
-        _offset           = _transform.position - GetMouseWorldPos(); 
-        _originalRotation = _transform.localRotation;
-        _isRotating       = true;
+            _zCoord = _cam.WorldToScreenPoint(_transform.position).z; //guarda la Z
+            _offset = _transform.position - GetMouseWorldPos();
+            _originalRotation = _transform.localRotation;
+            _isRotating = true;
+
+
     }
 
     /// <summary>
@@ -45,17 +46,13 @@ public class DragAndDrop
     /// </summary>
     internal void OnMouseDragCard()
     {
-        if (!_isDragging) 
-        {
             _transform.position = GetMouseWorldPos() + _offset; // mueve el objeto sin hacer un salto
             bool isMoving = _transform.position != _lastPosition;
 
-            if (_isRotating && _transform.position.y >= 15 && isMoving)  
+            if (_isRotating && _transform.position.y >= 0 && isMoving)  
                 _transform.rotation = Quaternion.RotateTowards(_transform.rotation, Quaternion.Euler(_customEulerRotation), 300f * Time.deltaTime); // suaviza la rotacion
 
             _lastPosition = _transform.position;
-
-        }
 
     }
 
@@ -64,20 +61,20 @@ public class DragAndDrop
     /// </summary>
     internal void OnMouseUpCard()
     {
-        float spawnDistance         = Vector3.Distance(_spawn, _transform.position);
-        float transformDataPosition = Vector3.Distance(_transformData.position, _transform.position);
+        float spawnDistance         = Vector3.Distance(_hand.CardOne.position, _transform.position);
+        float transformDataPosition = Vector3.Distance(_transformData.CardOne.position, _transform.position);
 
 
         if (spawnDistance < transformDataPosition)
         {
-            _transform.position      = _spawn;
+            _transform.position      = _hand.CardOne.position;
             _transform.localRotation = _originalRotation;
         }
         else 
         {
-            _transform.position      = _transformData.position;
-            _transform.localRotation = Quaternion.Euler(_transformData.rotation);
-            _isDragging              = true;
+            _transform.position      = _transformData.CardOne.position;
+            _transform.localRotation = Quaternion.Euler(_transformData.CardOne.rotation);
+
         }
 
         
@@ -90,4 +87,6 @@ public class DragAndDrop
         mousePoint.z = _zCoord; // mantiene la profundidad del objeto en el mundo
         return _cam.ScreenToWorldPoint(mousePoint); // convierte la posicion del mouse en coordenadas del mundo
     }
+
+
 }

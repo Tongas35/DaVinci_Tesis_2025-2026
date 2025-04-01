@@ -1,23 +1,74 @@
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Card : MonoBehaviour
 {
     DragAndDrop dragAndDrop;
 
     [SerializeField]
-    private Vector3 customRotation = new Vector3(45,40,180);
+    private Vector3 customRotation = new Vector3(0, 0, 0);
+
+    TransformAndRotation[] pos;
 
     [SerializeField]
-    private CardsData _card;
+    private PositionAndRotation _transformAndRotationHand;
+
+    public Position currentPosition = Position.Spawn;
 
     void Start()
     {
-        dragAndDrop = new DragAndDrop(this.transform, customRotation, _card.CardSpawn, _card.DiscardPile, _card.CardTransformSelect);
+        pos = new[]
+        {
+            _transformAndRotationHand.CardOne,
+            _transformAndRotationHand.CardTwo,
+            _transformAndRotationHand.CardThree,
+            _transformAndRotationHand.CardFour
+        };
+
+       
+        HandManager.Initialize(_transformAndRotationHand);
+
+        dragAndDrop = new DragAndDrop(transform, customRotation, _transformAndRotationHand, _transformAndRotationHand);
     }
 
-    void OnMouseUp() => dragAndDrop.OnMouseUpCard();
-    void OnMouseDown() => dragAndDrop.OnMouseDownCard();
+    void OnMouseUp()
+    {
+        if (currentPosition == Position.Hand)
+        {
+            dragAndDrop.OnMouseUpCard();
+        }
+        else if (currentPosition == Position.Spawn)
+        {
+            
+            HandManager.Instance.MoveToNextSlot(this);
+     
+           
+        }
 
-    void OnMouseDrag() => dragAndDrop.OnMouseDragCard();
+    }
 
+    void OnMouseDown() 
+    {
+        if (currentPosition == Position.Hand) 
+        {
+            dragAndDrop.OnMouseDownCard(); 
+        }
+    }
+
+
+    void OnMouseDrag()
+    {
+        if (currentPosition == Position.Hand)
+        {
+            dragAndDrop.OnMouseDragCard();
+        }
+    }
+
+
+    public enum Position
+    {
+        Spawn,
+        Hand,
+        Discart
+    }
 }
