@@ -17,4 +17,4 @@ MonoBehaviour:
   cardType: 0
   cardDescription: 
   cardImage: {fileID: 0}
-  cardPosition: {x: 0, y: 0, z: 0}
+  cardPosition: 0
