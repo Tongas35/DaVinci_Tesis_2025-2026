@@ -12,33 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7bec23434da7b64a8d0c3b848115072, type: 3}
   m_Name: Position Rotation Card
   m_EditorClassIdentifier: 
-  cardOne:
-    position: {x: 20.99, y: -3.7, z: -24.1}
+  handOne:
+    position: {x: 20.99, y: -3.6, z: -24}
     rotation: {x: 75, y: 0, z: 0}
-  cardTwo:
-    position: {x: 22.66, y: -3.7, z: -24.1}
+  handTwo:
+    position: {x: 22.66, y: -3.6, z: -24}
     rotation: {x: 75, y: 0, z: 0}
-  cardThree:
-    position: {x: 24.26, y: -3.7, z: -24.1}
+  handThree:
+    position: {x: 24.26, y: -3.6, z: -24}
     rotation: {x: 75, y: 0, z: 0}
-  cardFour:
-    position: {x: 25.66, y: -3.7, z: -24.1}
+  handFour:
+    position: {x: 25.66, y: -3.6, z: -24}
     rotation: {x: 75, y: 0, z: 0}
   tableOne:
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 3.7, y: 16.94, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}
   tableTwo:
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 23.45, y: 17.55, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}
   tableThree:
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 46.09, y: 17.55, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}
   tableFour:
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 3.7, y: 25.89, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}
   tableFive:
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 23.45, y: 26.5, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}
   tableSix:
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 46.09, y: 26.5, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}

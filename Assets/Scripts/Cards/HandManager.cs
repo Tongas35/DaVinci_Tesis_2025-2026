@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class HandManager
 {
@@ -39,10 +38,10 @@ public class HandManager
 
         _slots = new List<TransformAndRotation>
         {
-            _positionAndRotation.CardOne,
-            _positionAndRotation.CardTwo,
-            _positionAndRotation.CardThree,
-            _positionAndRotation.CardFour
+            _positionAndRotation.HandOne,
+            _positionAndRotation.HandTwo,
+            _positionAndRotation.HandThree,
+            _positionAndRotation.HandFour
         };
 
 

@@ -8,20 +8,17 @@ public class PositionAndRotation : ScriptableObject
     [Space(10)]
 
     [SerializeField]
-    [Tooltip("Posicion donde se encuentra el mazo de cartas.")]
-    private TransformAndRotationSpawn spawnDeck;
+    [Tooltip("Posicion en la mano del jugador.")]
+    private TransformAndRotation handOne;
     [SerializeField]
     [Tooltip("Posicion en la mano del jugador.")]
-    private TransformAndRotation cardOne;
+    private TransformAndRotation handTwo;
     [SerializeField]
     [Tooltip("Posicion en la mano del jugador.")]
-    private TransformAndRotation cardTwo;
+    private TransformAndRotation handThree;
     [SerializeField]
     [Tooltip("Posicion en la mano del jugador.")]
-    private TransformAndRotation cardThree;
-    [SerializeField]
-    [Tooltip("Posicion en la mano del jugador.")]
-    private TransformAndRotation cardFour;
+    private TransformAndRotation handFour;
     [SerializeField]
     private TransformAndRotation tableOne;
     [SerializeField]
@@ -36,12 +33,10 @@ public class PositionAndRotation : ScriptableObject
     private TransformAndRotation tableSix;
 
 
-
-    public TransformAndRotationSpawn SpawnDeck => spawnDeck;
-    public TransformAndRotation CardOne => cardOne;
-    public TransformAndRotation CardTwo => cardTwo;
-    public TransformAndRotation CardThree => cardThree;
-    public TransformAndRotation CardFour => cardFour;
+    public TransformAndRotation HandOne => handOne;
+    public TransformAndRotation HandTwo => handTwo;
+    public TransformAndRotation HandThree => handThree;
+    public TransformAndRotation HandFour => handFour;
     public TransformAndRotation TableOne => tableOne;
     public TransformAndRotation TableTwo => tableTwo;
     public TransformAndRotation TableThree => tableThree;

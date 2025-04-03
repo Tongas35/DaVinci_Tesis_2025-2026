@@ -20,6 +20,7 @@ public class DeckManager : MonoBehaviour
 
     private void Awake()
     {
+        HandManager.Initialize(positionAndRotation);
         if (instance == null)
         {
             instance = this;

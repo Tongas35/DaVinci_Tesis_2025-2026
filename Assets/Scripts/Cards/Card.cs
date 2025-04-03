@@ -1,41 +1,53 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class Card : MonoBehaviour
 {
-    DragAndDrop dragAndDrop;
+    DragAndDrop _dragAndDrop;
+    TableOnHand _tableOnHand;
 
     [SerializeField]
     private Vector3 customRotation = new Vector3(0, 0, 0);
 
-    TransformAndRotation[] pos;
+    //TransformAndRotation[] pos;
 
     [SerializeField]
-    private PositionAndRotation _transformAndRotationHand;
+    private PositionAndRotation _positionAndRotation;
 
     public Position currentPosition = Position.Spawn;
 
     void Start()
     {
-        pos = new[]
+        List<TransformAndRotation> slotPositions = new List<TransformAndRotation>
         {
-            _transformAndRotationHand.CardOne,
-            _transformAndRotationHand.CardTwo,
-            _transformAndRotationHand.CardThree,
-            _transformAndRotationHand.CardFour
+            _positionAndRotation.HandOne,
+            _positionAndRotation.HandTwo,
+            _positionAndRotation.HandThree,
+            _positionAndRotation.HandFour,
+            _positionAndRotation.TableOne,
+            _positionAndRotation.TableTwo,
+            _positionAndRotation.TableThree,
+            _positionAndRotation.TableFour,
+            _positionAndRotation.TableFive,
+            _positionAndRotation.TableSix
         };
 
-       
-        HandManager.Initialize(_transformAndRotationHand);
 
-        dragAndDrop = new DragAndDrop(transform, customRotation, _transformAndRotationHand, _transformAndRotationHand);
+
+
+
+
+        _dragAndDrop = new DragAndDrop(transform, customRotation, /*_transformAndRotationHand,*/ _positionAndRotation);
+        _tableOnHand = new TableOnHand(this, slotPositions);
     }
 
     void OnMouseUp()
     {
         if (currentPosition == Position.Hand)
         {
-            dragAndDrop.OnMouseUpCard();
+            //dragAndDrop.OnMouseUpCard();  NO SIRVE
+            _tableOnHand.Objetive();
         }
         else if (currentPosition == Position.Spawn)
         {
@@ -45,13 +57,14 @@ public class Card : MonoBehaviour
            
         }
 
+
     }
 
     void OnMouseDown() 
     {
         if (currentPosition == Position.Hand) 
         {
-            dragAndDrop.OnMouseDownCard(); 
+            _dragAndDrop.OnMouseDownCard(); 
         }
     }
 
@@ -60,7 +73,7 @@ public class Card : MonoBehaviour
     {
         if (currentPosition == Position.Hand)
         {
-            dragAndDrop.OnMouseDragCard();
+            _dragAndDrop.OnMouseDragCard();
         }
     }
 
