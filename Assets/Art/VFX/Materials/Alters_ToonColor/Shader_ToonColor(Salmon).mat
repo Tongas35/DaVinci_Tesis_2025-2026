@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader_ToonColor(Red)
+  m_Name: Shader_ToonColor(Salmon)
   m_Shader: {fileID: -6465566751694194690, guid: ee6b37542eb37114ab80004d47396a71, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -23,10 +23,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Normla:
-        m_Texture: {fileID: 2800000, guid: 46e7beb09846a334eacc65adb8644b6d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Texture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -47,12 +43,12 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ToonShader: 0.25
-    - _ToonToneMAX_OUT: 1.6
-    - _ToonToneMIN_OUT: 0.1
+    - _ToonShader: 0.19
+    - _ToonToneMAX_OUT: 2.08
+    - _ToonToneMIN_OUT: -0.17
     m_Colors:
-    - _FullColor: {r: 1.3041189, g: 0, b: 0.026076755, a: 1}
-    - _RemapTone: {r: -0.36, g: 7.36, b: 0, a: 0}
+    - _FullColor: {r: 1.3207548, g: 0.2202045, b: 0.13082948, a: 1}
+    - _RemapTone: {r: -0.4, g: 7, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2187785466974801289
 MonoBehaviour:
