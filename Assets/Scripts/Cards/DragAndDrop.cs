@@ -13,16 +13,14 @@ public class DragAndDrop
     private Quaternion           _originalRotation;
     private Vector3              _customEulerRotation;
     private Vector3              _lastPosition;
-    //private PositionAndRotation  _hand;
     private PositionAndRotation  _transformData;
     
 
-    public DragAndDrop(Transform transform, Vector3 customEulerRotation, /*PositionAndRotation hand,*/ PositionAndRotation transformData)
+    public DragAndDrop(Transform transform, Vector3 customEulerRotation, PositionAndRotation transformData)
     {
         _transform           = transform;
         _cam                 = Camera.main;
         _customEulerRotation = customEulerRotation;
-        //_hand                = hand;
         _transformData       = transformData;
        
         
@@ -56,30 +54,7 @@ public class DragAndDrop
 
     }
 
-    /// <summary>
-    /// metodo para cuando se suelta el mouse
-    /// </summary>
-    //internal void OnMouseUpCard()
-    //{
-    //    float spawnDistance         = Vector3.Distance(_hand.CardOne.position, _transform.position);
-    //    float transformDataPosition = Vector3.Distance(_transformData.CardOne.position, _transform.position);
 
-
-    //    if (spawnDistance < transformDataPosition)
-    //    {
-    //        _transform.position      = _hand.CardOne.position;
-    //        _transform.localRotation = _originalRotation;
-    //    }
-    //    else 
-    //    {
-    //        _transform.position      = _transformData.CardOne.position;
-    //        _transform.localRotation = Quaternion.Euler(_transformData.CardOne.rotation);
-
-    //    }
-
-        
-    //    _isRotating = false;
-    //}
 
     private Vector3 GetMouseWorldPos()
     {

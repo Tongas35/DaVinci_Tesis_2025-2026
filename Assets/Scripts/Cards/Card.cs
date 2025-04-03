@@ -10,8 +10,6 @@ public class Card : MonoBehaviour
     [SerializeField]
     private Vector3 customRotation = new Vector3(0, 0, 0);
 
-    //TransformAndRotation[] pos;
-
     [SerializeField]
     private PositionAndRotation _positionAndRotation;
 
@@ -38,7 +36,7 @@ public class Card : MonoBehaviour
 
 
 
-        _dragAndDrop = new DragAndDrop(transform, customRotation, /*_transformAndRotationHand,*/ _positionAndRotation);
+        _dragAndDrop = new DragAndDrop(transform, customRotation, _positionAndRotation);
         _tableOnHand = new TableOnHand(this, slotPositions);
     }
 
@@ -46,7 +44,6 @@ public class Card : MonoBehaviour
     {
         if (currentPosition == Position.Hand)
         {
-            //dragAndDrop.OnMouseUpCard();  NO SIRVE
             _tableOnHand.Objetive();
         }
         else if (currentPosition == Position.Spawn)
