@@ -20,33 +20,33 @@ public class TablePosition
     {
         Camera cam = Camera.main;
 
-        Vector3 direccion = (_transform.position - cam.transform.position).normalized;
+        Vector3 direction = (_transform.position - cam.transform.position).normalized;
 
 
-        float distancia = 45f;
+        float distance = 45f;
 
       
-        Vector3 nuevaPosicion = cam.transform.position + direccion * distancia;
+        Vector3 newPosition = cam.transform.position + direction * distance;
 
         switch (_tableID)
         {
             case TableID.TableOne:
-                _data.TableOne.position = nuevaPosicion;
+                _data.TableOne.position = newPosition;
                 break;
             case TableID.TableTwo:
-                _data.TableTwo.position = nuevaPosicion;
+                _data.TableTwo.position = newPosition;
                 break;
             case TableID.TableThree:
-                _data.TableThree.position = nuevaPosicion;
+                _data.TableThree.position = newPosition;
                 break;
             case TableID.TableFour:
-                _data.TableFour.position = nuevaPosicion;
+                _data.TableFour.position = newPosition;
                 break;
             case TableID.TableFive:
-                _data.TableFive.position = nuevaPosicion;
+                _data.TableFive.position = newPosition;
                 break;
             case TableID.TableSix:
-                _data.TableSix.position = nuevaPosicion;
+                _data.TableSix.position = newPosition;
                 break;
         }
 
