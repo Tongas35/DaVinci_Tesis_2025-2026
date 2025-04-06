@@ -25,20 +25,20 @@ MonoBehaviour:
     position: {x: 25.66, y: -3.6, z: -24}
     rotation: {x: 75, y: 0, z: 0}
   tableOne:
-    position: {x: 3.7, y: 16.94, z: -20.83}
+    position: {x: 3.7, y: 17, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}
   tableTwo:
-    position: {x: 23.45, y: 17.55, z: -20.83}
+    position: {x: 23.45, y: 17, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}
   tableThree:
-    position: {x: 46.09, y: 17.55, z: -20.83}
+    position: {x: 46.09, y: 17, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}
   tableFour:
-    position: {x: 3.7, y: 25.89, z: -20.83}
+    position: {x: 3.7, y: 26, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}
   tableFive:
-    position: {x: 23.45, y: 26.5, z: -20.83}
+    position: {x: 23.45, y: 26, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}
   tableSix:
-    position: {x: 46.09, y: 26.5, z: -20.83}
+    position: {x: 46.09, y: 26, z: -20.83}
     rotation: {x: 0, y: 0, z: 0}

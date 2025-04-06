@@ -44,7 +44,7 @@ public class Card : MonoBehaviour
     {
         if (currentPosition == Position.Hand)
         {
-            _tableOnHand.Objetive();
+            _tableOnHand.GoObjetive();
         }
         else if (currentPosition == Position.Spawn)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TableOnHand
 {
-
+    public Vector3 targetScale = new Vector3(0.2f, 0.2f, 0.2f);
 
     private List<TransformAndRotation> _slotPositions;
     Card _card;
@@ -34,7 +34,7 @@ public class TableOnHand
         return (positionSlot, rotationSlot);
     }
 
-    public void Objetive() 
+    public void GoObjetive() 
     {
         (Vector3 position, Vector3 rotation) slotObjetive = Slots();
 
@@ -42,5 +42,19 @@ public class TableOnHand
         _card.transform.rotation = Quaternion.Euler(slotObjetive.rotation);
 
 
+        //_card.transform.LookAt(Camera.main.transform);
+        
+
     }
+
+    public IEnumerator TransformCard(Card card) 
+    {
+
+        if (card.transform.position.y >= 17) 
+        {
+            _card.transform.LookAt(Camera.main.transform);
+            _card.transform.localScale = Vector3.Lerp(_card.transform.localScale, targetScale, Time.deltaTime * 3);
+            yield return new WaitForSeconds(1);
+        }
+    } 
 }
