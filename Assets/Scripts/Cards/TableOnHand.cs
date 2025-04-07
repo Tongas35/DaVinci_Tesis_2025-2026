@@ -34,7 +34,7 @@ public class TableOnHand
         return (positionSlot, rotationSlot);
     }
 
-    public void GoObjetive() 
+    public Card GoObjetive() 
     {
         (Vector3 position, Vector3 rotation) slotObjetive = Slots();
 
@@ -43,7 +43,7 @@ public class TableOnHand
 
 
         //_card.transform.LookAt(Camera.main.transform);
-        
+        return _card;
 
     }
 

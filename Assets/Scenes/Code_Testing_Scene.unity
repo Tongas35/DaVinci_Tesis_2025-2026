@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 8079163}
   - component: {fileID: 8079162}
   m_Layer: 5
-  m_Name: Image bebida roja
+  m_Name: cerveza carnelian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1762,7 +1762,7 @@ GameObject:
   - component: {fileID: 681034960}
   - component: {fileID: 681034959}
   m_Layer: 5
-  m_Name: Image bebida gris
+  m_Name: cerveza doble onix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1926,7 +1926,7 @@ GameObject:
   - component: {fileID: 723406155}
   - component: {fileID: 723406154}
   m_Layer: 5
-  m_Name: Image bebida violeta
+  m_Name: gin negro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4002,7 +4002,7 @@ GameObject:
   - component: {fileID: 1911639544}
   - component: {fileID: 1911639543}
   m_Layer: 5
-  m_Name: Image bebida verde
+  m_Name: colmillo dorado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
