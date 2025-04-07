@@ -41,8 +41,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ScreenSaturation: 0.3
-    - _TintPower_Alpha: 0.1
+    - _ScreenSaturation: 0.368
+    - _TintPower_Alpha: 0.11
     m_Colors:
-    - _ScreenColor: {r: 1, g: 0, b: 0.3688097, a: 1}
+    - _ScreenColor: {r: 0.6981132, g: 0.3227931, b: 0.062566735, a: 1}
   m_BuildTextureStacks: []
