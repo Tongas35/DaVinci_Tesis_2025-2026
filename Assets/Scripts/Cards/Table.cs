@@ -11,7 +11,7 @@ public class Table : MonoBehaviour
     {
         tablePosition = new TablePosition(data, _tableID, transform);
         tablePosition.AddPosition();
-        var asd = tablePosition.DetectPosition();
+        
         
     }
 

@@ -13,6 +13,9 @@ public class Card : MonoBehaviour
     [SerializeField]
     private PositionAndRotation _positionAndRotation;
 
+    
+    public CardsData _cardData;
+
     public Position currentPosition = Position.Spawn;
 
     void Start()
