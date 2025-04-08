@@ -42,7 +42,7 @@ public class TableOnHand
         _card.transform.rotation = Quaternion.Euler(slotObjetive.rotation);
 
 
-        //_card.transform.LookAt(Camera.main.transform);
+        
         return _card;
 
     }

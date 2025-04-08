@@ -5,14 +5,12 @@ using UnityEngine.UI;
 public class Order 
 {
     List<Image> _orders;
-    Card _card;
     Transform _transform;
 
-    public Order(List<Image> orders, Transform transform, Card card)
+    public Order(List<Image> orders, Transform transform)
     {
         _orders = orders;
         _transform = transform;
-        _card = card;
     }
 
     public Image OrderList() 
@@ -27,7 +25,7 @@ public class Order
         return selectedImage;
     }
 
-    public void OrderAction(Image orderActive) 
+    public void OrderAction(Image orderActive, Card posCard) 
     {
 
         int result = orderActive.name switch
@@ -38,50 +36,58 @@ public class Order
             "cerveza doble onix" => (int)TypeDrink.gris,
             _ => 5
         };
-
-        if (result == (int)TypeDrink.roja && _card.transform.rotation == Quaternion.Euler(0,0,0))
+        
+        if (result == (int)TypeDrink.roja && posCard.transform.rotation == Quaternion.identity)
         {
-            if (_card._cardData.name == "cerveza carnelian")
+            if (posCard._cardData.name == "Cerveza Carnelian")
             {
                 Debug.Log("Bebida CORRECTA!");
+                Debug.Log(posCard._cardData.name);
             }
             else 
             {
                 Debug.Log("Bebida INCORRECTA!");
+                Debug.Log(posCard._cardData.name);
             }
         }
-        else if(result == (int)TypeDrink.verde && _card.transform.rotation == Quaternion.Euler(0, 0, 0))
+        else if(result == (int)TypeDrink.verde && posCard.transform.rotation == Quaternion.identity)
         {
-            if (_card._cardData.name == "colmillo dorado")
+            if (posCard._cardData.name == "Colmillo Dorado")
             {
                 Debug.Log("Bebida CORRECTA!");
+                Debug.Log(posCard._cardData.name);
             }
             else
             {
+                Debug.Log(posCard._cardData.name);
                 Debug.Log("Bebida INCORRECTA!");
             }
 
         }
-        else if(result == (int)TypeDrink.violeta && _card.transform.rotation == Quaternion.Euler(0, 0, 0))
+        else if(result == (int)TypeDrink.violeta && posCard.transform.rotation == Quaternion.identity)
         {
-            if (_card._cardData.name == "gin negro")
+            if (posCard._cardData.name == "Gin Negro")
             {
                 Debug.Log("Bebida CORRECTA!");
+                Debug.Log(posCard._cardData.name);
             }
             else
             {
                 Debug.Log("Bebida INCORRECTA!");
+                Debug.Log(posCard._cardData.name);
             }
         }
-        else if(result == (int)TypeDrink.gris && _card.transform.rotation == Quaternion.Euler(0, 0, 0))
+        else if(result == (int)TypeDrink.gris && posCard.transform.rotation == Quaternion.identity)
         {
-            if (_card._cardData.name == "cerveza doble onix")
+            if (posCard._cardData.name == "Cerveza Doble Onix")
             {
                 Debug.Log("Bebida CORRECTA!");
+                Debug.Log(posCard._cardData.name);
             }
             else
             {
                 Debug.Log("Bebida INCORRECTA!");
+                Debug.Log(posCard._cardData.name);
             }
         }
 
