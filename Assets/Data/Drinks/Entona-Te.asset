@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: entona-te
   cardShopCost: 0
-  cardType: 0
+  cardType: 1
   cardDescription: 
   cardImage: {fileID: 0}

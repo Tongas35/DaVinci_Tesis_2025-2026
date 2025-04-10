@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,11 +7,15 @@ public class Order
 {
     List<Image> _orders;
     Transform _transform;
-
-    public Order(List<Image> orders, Transform transform)
+    Card _card;
+    Coroutine _coroutine;
+    MonoBehaviour _context;
+    public Order(List<Image> orders, Transform transform, Card posCard, MonoBehaviour context)
     {
         _orders = orders;
         _transform = transform;
+        _card = posCard;
+        _context = context;
     }
 
     public Image OrderList() 
@@ -42,12 +47,14 @@ public class Order
             if (posCard._cardData.name == "Cerveza Carnelian")
             {
                 Debug.Log("Bebida CORRECTA!");
-                Debug.Log(posCard._cardData.name);
+
+                _coroutine = _context.StartCoroutine(Used(posCard));
             }
             else 
             {
                 Debug.Log("Bebida INCORRECTA!");
-                Debug.Log(posCard._cardData.name);
+                _coroutine = _context.StartCoroutine(Used(posCard));
+
             }
         }
         else if(result == (int)TypeDrink.verde && posCard.transform.rotation == Quaternion.identity)
@@ -55,12 +62,13 @@ public class Order
             if (posCard._cardData.name == "Colmillo Dorado")
             {
                 Debug.Log("Bebida CORRECTA!");
-                Debug.Log(posCard._cardData.name);
+                _coroutine = _context.StartCoroutine(Used(posCard));
             }
             else
             {
-                Debug.Log(posCard._cardData.name);
+                
                 Debug.Log("Bebida INCORRECTA!");
+                _coroutine = _context.StartCoroutine(Used(posCard));
             }
 
         }
@@ -69,12 +77,12 @@ public class Order
             if (posCard._cardData.name == "Gin Negro")
             {
                 Debug.Log("Bebida CORRECTA!");
-                Debug.Log(posCard._cardData.name);
+                _coroutine = _context.StartCoroutine(Used(posCard));
             }
             else
             {
                 Debug.Log("Bebida INCORRECTA!");
-                Debug.Log(posCard._cardData.name);
+                _coroutine = _context.StartCoroutine(Used(posCard));
             }
         }
         else if(result == (int)TypeDrink.gris && posCard.transform.rotation == Quaternion.identity)
@@ -82,12 +90,12 @@ public class Order
             if (posCard._cardData.name == "Cerveza Doble Onix")
             {
                 Debug.Log("Bebida CORRECTA!");
-                Debug.Log(posCard._cardData.name);
+                _coroutine = _context.StartCoroutine(Used(posCard));
             }
             else
             {
                 Debug.Log("Bebida INCORRECTA!");
-                Debug.Log(posCard._cardData.name);
+                _coroutine = _context.StartCoroutine(Used(posCard));
             }
         }
 
@@ -102,5 +110,13 @@ public class Order
 
 
     }
+
+    IEnumerator Used(Card card) 
+    {
+
+        yield return new WaitForSeconds(3);
+        card.gameObject.SetActive(false);
+    }
+
 
 }

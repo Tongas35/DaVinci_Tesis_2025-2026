@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +23,7 @@ public class Client : MonoBehaviour
     private void Start()
     {
        
-        _order = new Order(_orders, transform);
+        _order = new Order(_orders, transform, _card, this);
         _distance = new Distance<Card>(DeckManager.instance.cards, transform);
         img = _order.OrderList();
 
@@ -40,11 +41,10 @@ public class Client : MonoBehaviour
         globe.transform.LookAt(Camera.main.transform);
         globe.transform.Rotate(0, 180, 0);
         _order.OrderAction(img, _card); //necesito buscar la carta mas cercana
-
+       
 
 
     }
-
 
 
 }
