@@ -10,7 +10,7 @@ public class Client : MonoBehaviour
     private Distance<Card> _distance;
     Card _card;
  
-
+    public GameObject beer;
     [SerializeField]
     List<Image> _orders;
 
@@ -35,12 +35,12 @@ public class Client : MonoBehaviour
     }
     private void Update()
     {
-        _card = _distance.SlotsCards();
+        _card = _distance?.SlotsCards();
         //_card = _onHand?.GoObjetive(); //no tengo al referencia de onHand
         globe.transform.position = transform.position + new Vector3(5, 12, 0);
         globe.transform.LookAt(Camera.main.transform);
         globe.transform.Rotate(0, 180, 0);
-        _order.OrderAction(img, _card); //necesito buscar la carta mas cercana
+        _order?.OrderAction(img, _card, beer); //necesito buscar la carta mas cercana
        
 
 
