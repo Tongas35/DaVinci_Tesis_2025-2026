@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Ron Mentolado
+  m_Name: Dulce Miel Especias
   m_EditorClassIdentifier: 
-  cardName: ron mentolado
+  cardName: Dulce de Miel y Especias
   cardShopCost: 0
-  cardType: 1
-  cardDescription: 
+  cardType: 3
+  isExotic: 0
+  cardDescription: Un postre que abraza la dulzura y el picor por igual.
   cardImage: {fileID: 0}

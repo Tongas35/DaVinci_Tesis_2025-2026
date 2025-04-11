@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Desterrar al Alborotador
+  m_Name: Brisa Cerezo
   m_EditorClassIdentifier: 
-  cardName: Desterrar al Alborotador
+  cardName: Brisa de Cerezo
   cardShopCost: 0
-  cardType: 0
+  cardType: 1
   isExotic: 0
-  cardDescription: Desintegras el cuerpo de el cliente objetivo para teletransportarlo
-    fuera de la cantina.
+  cardDescription: "Ligera como el p\xE9talo al caer, perfecta para calmar \xE1nimos."
   cardImage: {fileID: 0}

@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Desterrar al Alborotador
+  m_Name: Ensalada de Hierbas Magicas
   m_EditorClassIdentifier: 
-  cardName: Desterrar al Alborotador
+  cardName: "Ensalada de Hierbas M\xE1gicas"
   cardShopCost: 0
-  cardType: 0
-  isExotic: 0
-  cardDescription: Desintegras el cuerpo de el cliente objetivo para teletransportarlo
-    fuera de la cantina.
+  cardType: 3
+  isExotic: 1
+  cardDescription: "Conocida preparaci\xF3n que es famosa por provocar alucinaciones."
   cardImage: {fileID: 0}

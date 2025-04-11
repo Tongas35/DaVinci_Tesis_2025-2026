@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Colmillo Dorado
+  m_Name: Ramillete Encantado
   m_EditorClassIdentifier: 
-  cardName: colmillo dorado
+  cardName: Ramillete Encantado
   cardShopCost: 0
-  cardType: 1
-  cardDescription: 
+  cardType: 3
+  isExotic: 0
+  cardDescription: Es especialmente apreciada por elfos y humanos.
   cardImage: {fileID: 0}

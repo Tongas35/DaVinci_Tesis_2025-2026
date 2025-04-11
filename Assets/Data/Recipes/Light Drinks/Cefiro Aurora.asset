@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Desterrar al Alborotador
+  m_Name: Cefiro Aurora
   m_EditorClassIdentifier: 
-  cardName: Desterrar al Alborotador
+  cardName: Cefiro de la Aurora
   cardShopCost: 0
-  cardType: 0
-  isExotic: 0
-  cardDescription: Desintegras el cuerpo de el cliente objetivo para teletransportarlo
-    fuera de la cantina.
+  cardType: 1
+  isExotic: 1
+  cardDescription: "Una combinaci\xF3n de multiples extractos da como resultado esta
+    maravilla, similar en apariencia a una peque\xF1a aurora en un vaso."
   cardImage: {fileID: 0}

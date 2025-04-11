@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
   m_Name: Generar Bardo
   m_EditorClassIdentifier: 
-  cardName: generar bardo
+  cardName: Generar Bardo
   cardShopCost: 0
   cardType: 0
-  cardDescription: 
+  isExotic: 0
+  cardDescription: "Invocas un bardo ilusorio que comienza a tocar m\xFAsica, mejorando
+    la reputaci\xF3n y tolerancia en la cantina, temporalmente."
   cardImage: {fileID: 0}

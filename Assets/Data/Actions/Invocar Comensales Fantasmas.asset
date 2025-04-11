@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Desterrar al Alborotador
+  m_Name: Invocar Comensales Fantasmas
   m_EditorClassIdentifier: 
-  cardName: Desterrar al Alborotador
+  cardName: Invocar Comensales Fantasmas
   cardShopCost: 0
   cardType: 0
   isExotic: 0
-  cardDescription: Desintegras el cuerpo de el cliente objetivo para teletransportarlo
-    fuera de la cantina.
+  cardDescription: Invocas multiples espectros que ocupan tus mesas por un tiempo,
+    ralentizando el ritmo con el entran nuevos clientes a la cantina. Esta carta
+    puede activar el trait dragonborn solitario.
   cardImage: {fileID: 0}

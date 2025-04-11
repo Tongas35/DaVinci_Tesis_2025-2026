@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Desterrar al Alborotador
+  m_Name: Shot Artico
   m_EditorClassIdentifier: 
-  cardName: Desterrar al Alborotador
+  cardName: Shot Artico
   cardShopCost: 0
-  cardType: 0
+  cardType: 2
   isExotic: 0
-  cardDescription: Desintegras el cuerpo de el cliente objetivo para teletransportarlo
-    fuera de la cantina.
+  cardDescription: "Un trago breve y potente que golpea como el fr\xEDo del \xC1rtico,
+    dejando un estela de valent\xEDa... y un poco de temblor."
   cardImage: {fileID: 0}

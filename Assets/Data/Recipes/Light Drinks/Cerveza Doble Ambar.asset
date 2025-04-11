@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Sanguinario
+  m_Name: Cerveza Doble Ambar
   m_EditorClassIdentifier: 
-  cardName: sanguinario
+  cardName: Cerveza Doble Ambar
   cardShopCost: 0
   cardType: 1
-  cardDescription: 
+  isExotic: 0
+  cardDescription: Una cerveza rubia, suave y con cuerpo.
   cardImage: {fileID: 0}

@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Entona-Te
+  m_Name: Tonico Fuego
   m_EditorClassIdentifier: 
-  cardName: entona-te
+  cardName: Tonico de Fuego
   cardShopCost: 0
-  cardType: 1
-  cardDescription: 
+  cardType: 2
+  isExotic: 1
+  cardDescription: "Un whisky encendido con especias \xEDgneas, amado por aquellos
+    con sangre drac\xF3nica."
   cardImage: {fileID: 0}

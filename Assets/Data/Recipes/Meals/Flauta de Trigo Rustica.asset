@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Desterrar al Alborotador
+  m_Name: Flauta de Trigo Rustica
   m_EditorClassIdentifier: 
-  cardName: Desterrar al Alborotador
+  cardName: Flauta de Trigo Rustica
   cardShopCost: 0
-  cardType: 0
+  cardType: 3
   isExotic: 0
-  cardDescription: Desintegras el cuerpo de el cliente objetivo para teletransportarlo
-    fuera de la cantina.
+  cardDescription: "Los humanos aman acompa\xF1ar otros platos de comida con esta
+    preparaci\xF3n."
   cardImage: {fileID: 0}

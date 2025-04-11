@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
   m_Name: Transformacion de Materia
   m_EditorClassIdentifier: 
-  cardName: transformacion de materia
+  cardName: Transformacion de Materia
   cardShopCost: 0
   cardType: 0
-  cardDescription: 
+  isExotic: 0
+  cardDescription: Cambias dos cartas de tu mano, por otras dos cartas del mazo del
+    mismo tipo.
   cardImage: {fileID: 0}

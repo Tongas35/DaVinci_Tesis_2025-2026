@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aeadd77bcc32124b9e8802d006b4475, type: 3}
-  m_Name: Desterrar al Alborotador
+  m_Name: Ojo Obsidiana
   m_EditorClassIdentifier: 
-  cardName: Desterrar al Alborotador
+  cardName: Ojo Obsidiana
   cardShopCost: 0
-  cardType: 0
-  isExotic: 0
-  cardDescription: Desintegras el cuerpo de el cliente objetivo para teletransportarlo
-    fuera de la cantina.
+  cardType: 2
+  isExotic: 1
+  cardDescription: Hay almas que dicen que esta bebida es tan oscura, que oculta
+    secretos.
   cardImage: {fileID: 0}

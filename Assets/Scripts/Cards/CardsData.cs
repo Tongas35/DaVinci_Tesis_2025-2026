@@ -9,6 +9,8 @@ public class CardsData : ScriptableObject
     private int cardShopCost;
     [SerializeField] 
     private CardType cardType;
+    [SerializeField]
+    private bool isExotic;
     [SerializeField] 
     private string cardDescription;
     [SerializeField] 
@@ -20,12 +22,15 @@ public class CardsData : ScriptableObject
     public CardType CardTypeProperty => cardType;
     public string CardDescription => cardDescription;
     public Sprite CardImage => cardImage;
+    public bool IsExotic => isExotic;
 
 
     public enum CardType
     {
         Action, 
-        Recipe
+        LightDrink,
+        StrongDrink,
+        Meal
     }
 
 }
