@@ -13,6 +13,16 @@ public abstract class GenericCustomerAI : MonoBehaviour
     public float tolerance;
     public float reputationModifier;
 
+    // Aca estan los pesos de cada preferencia, y se asignan en cada herencia por medio de DefineCategoryWeights()
+    protected Dictionary<Category, int> categoryWeights;
+
+    protected virtual void Awake()
+    {
+        // Se crea el diccionario y se completa en cada clase que haya con herencia de esta misma
+        categoryWeights = new Dictionary<Category, int>();
+        DefineCategoryWeights();
+    }
+
     protected virtual void Start()
     {
         TransitionToState(CustomerState.Spawn); // Aparece el cliente, inicializando con el estado Spawn
@@ -64,11 +74,13 @@ public abstract class GenericCustomerAI : MonoBehaviour
 
     protected virtual void OnDeciding()
     {
-        // Logica de elección de pedido basandose en la raza y preferencias
-
         if (stateTimer <= 0)
         {
-            // Funcion para pedir la carta de receta
+            // Seleccionamos el tipo de carta pedida segun los pesos de chance asigados por raza
+            Category chosen = SelectCategory();
+
+            // Se llama al sistema de cartas para pedir una receta de ese tipo
+            RequestRecipe(chosen);
 
             TransitionToState(CustomerState.Waiting);
         }
@@ -126,6 +138,49 @@ public abstract class GenericCustomerAI : MonoBehaviour
             TransitionToState(CustomerState.Leaving);
         }
     }
+
+    private Category SelectCategory()
+    {
+        // Se tira el random
+        int roll = Random.Range(0, 100);
+        
+        // variable que va tomando el random y comparandolo contra cada categoria
+        int cumulative = 0;
+        
+        // kv = keyValue - Si es kv.Value chequea el peso/chance asignado, si es kv.Key chequea la categoria
+        foreach (var kv in categoryWeights)
+        {
+            cumulative += kv.Value;
+            
+            // chequea si el roll le dio dentro de una categoria o si se paso y tiene que ir a otra
+            if (roll < cumulative)
+                return kv.Key;
+        }
+        
+        // En caso de que cumulative se pase de 100, devolvemos la primera de las categorias en el diccionario
+        foreach (var kv in categoryWeights)
+            return kv.Key;
+        
+        // Y esto es por si todo falla, aunque nunca tendria por que llegar aca
+        return Category.Light;
+    }
+
+    // ESTE METODO SE IMPLEMENTA EN CADA HERENCIA 
+    protected virtual void DefineCategoryWeights()
+    {
+        // Carga de Testeo, suman 100 dividido equitativamente
+        categoryWeights[Category.Light] = 25;
+        categoryWeights[Category.Strong] = 25;
+        categoryWeights[Category.Exotic] = 25;
+        categoryWeights[Category.Meal] = 25;
+    }
+
+    // Debug de llamada al sistema de cartas
+    protected void RequestRecipe(Category cat)
+    {
+        Debug.Log($"{customerRace} pide una {cat}");
+    }
+
 }
 
 public enum CustomerState
@@ -136,4 +191,12 @@ public enum CustomerState
     Consuming,
     Leaving,
     Crisis,
+}
+
+public enum Category
+{   
+    Light,
+    Strong,
+    Exotic,
+    Meal
 }
