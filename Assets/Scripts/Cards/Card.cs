@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,21 +7,22 @@ public class Card : MonoBehaviour
 {
     DragAndDrop _dragAndDrop;
     TableOnHand _tableOnHand;
+    public Elf AssignedElf { get; set; }
+
+    
+    public static event Action<Card, Elf> onCardPlaced;
 
     [SerializeField]
-    private Vector3 customRotation = new Vector3(0, 0, 0);
-
+    private Vector3 customRotation = Vector3.zero;
     [SerializeField]
     private PositionAndRotation _positionAndRotation;
 
-    
     public CardsData _cardData;
-
     public Position currentPosition = Position.Spawn;
 
     void Start()
     {
-        List<TransformAndRotation> slotPositions = new List<TransformAndRotation>
+        var slotPositions = new List<TransformAndRotation>
         {
             _positionAndRotation.HandOne,
             _positionAndRotation.HandTwo,
@@ -34,11 +36,6 @@ public class Card : MonoBehaviour
             _positionAndRotation.TableSix
         };
 
-
-
-
-
-
         _dragAndDrop = new DragAndDrop(transform, customRotation, _positionAndRotation);
         _tableOnHand = new TableOnHand(this, slotPositions);
     }
@@ -48,35 +45,50 @@ public class Card : MonoBehaviour
         if (currentPosition == Position.Hand)
         {
             _tableOnHand.GoObjetive();
+
+
+            Elf targetElf = null;
+            float minDistance = Mathf.Infinity;
+            Vector3 cardPosition = transform.position;
+
+            foreach (var elf in GameObject.FindObjectsOfType<Elf>())
+            {
+                float distance = Vector3.Distance(cardPosition, elf.transform.position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    targetElf = elf;
+                }
+            }
+
+            
+            if (targetElf != null)
+            {
+                AssignedElf = targetElf;
+                onCardPlaced?.Invoke(this, targetElf);
+            }
+            else
+            {
+                Debug.LogWarning("no se encontro un Elf cercano para esta carta");
+            }
         }
         else if (currentPosition == Position.Spawn)
         {
-            
             HandManager.Instance.MoveToNextSlot(this);
-     
-           
         }
-
-
     }
 
-    void OnMouseDown() 
+    void OnMouseDown()
     {
-        if (currentPosition == Position.Hand) 
-        {
-            _dragAndDrop.OnMouseDownCard(); 
-        }
+        if (currentPosition == Position.Hand)
+            _dragAndDrop.OnMouseDownCard();
     }
-
 
     void OnMouseDrag()
     {
         if (currentPosition == Position.Hand)
-        {
             _dragAndDrop.OnMouseDragCard();
-        }
     }
-
 
     public enum Position
     {

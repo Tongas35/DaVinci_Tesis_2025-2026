@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class GenericCustomerAI : MonoBehaviour
 {
     public CustomerState currentState;
     public float stateTimer;
+    public float stateTimer2;
     public float waitTime = 5f; // Tiempo de espera para decidir o consumir, etc.
 
     // Variables base para personalizar segun la raza (esto va a ser util cuando haya herencias de este code y cuando haya logica ya aplicada)
@@ -31,6 +30,7 @@ public abstract class GenericCustomerAI : MonoBehaviour
     protected virtual void Update()
     {
         stateTimer -= Time.deltaTime;
+        stateTimer2 -= Time.deltaTime;
         switch (currentState)
         {
             case CustomerState.Spawn:
@@ -66,7 +66,7 @@ public abstract class GenericCustomerAI : MonoBehaviour
     {
         // Entra, se mueve, se sienta y despues del Timer, arranca a decidir que quiere
         
-        if (stateTimer <= 0)
+        if (stateTimer2 <= 0)
         {
             TransitionToState(CustomerState.Deciding);
         }

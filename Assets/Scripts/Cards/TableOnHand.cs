@@ -15,7 +15,7 @@ public class TableOnHand
         _slotPositions = slotPositions;
     }
 
-    private (Vector3 position, Vector3 rotation )Slots()
+    private (Vector3, Vector3)Slots()
     {
         float dist = Mathf.Infinity;
         Vector3 positionSlot = Vector3.zero;

@@ -1,37 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Order 
+public class Order
 {
-    List<Image> _orders;
-    Transform _transform;
-    Card _card;
-    Coroutine _coroutine;
-    MonoBehaviour _context;
-    public Order(List<Image> orders, Transform transform, Card posCard, MonoBehaviour context)
+    private List<Image> _orders;
+    private Transform _transform;
+    private Coroutine _coroutine;
+    private MonoBehaviour _context;
+
+    public Order(List<Image> orders, Transform transform, MonoBehaviour context)
     {
         _orders = orders;
         _transform = transform;
-        _card = posCard;
         _context = context;
     }
 
-    public Image OrderList() 
+    public Image OrderList()
     {
-        Image selectedImage = null;
         if (_orders != null && _orders.Count > 0)
         {
-            int randomIndex = Random.Range(0, _orders.Count); 
-            selectedImage = _orders[randomIndex];       
-            Debug.Log("imagen seleccionada: " + selectedImage.name);
+            int randomIndex = Random.Range(0, _orders.Count);
+            return _orders[randomIndex];
         }
-        return selectedImage;
+        return null;
     }
 
-    public void OrderAction(Image orderActive, Card posCard, GameObject beer) 
+
+    public void OrderAction(Image orderActive, Card card, GameObject beer)
     {
+        //if (orderActive == null || card == null || card._cardData == null)
+        //{
+        //    Debug.LogError("null");
+        //    return;
+        //}
 
         int result = orderActive.name switch
         {
@@ -41,156 +45,36 @@ public class Order
             "cerveza doble onix" => (int)TypeDrink.gris,
             _ => 5
         };
-        
-        if (result == (int)TypeDrink.roja && posCard.transform.rotation == Quaternion.identity)
+
+        bool isCorrect = result switch
         {
-            if (posCard._cardData.name == "Cerveza Carnelian")
-            {
-                Debug.LogError("Bebida CORRECTA!");
+            (int)TypeDrink.roja when card._cardData.name == "Cerveza Carnelian" => true,
+            (int)TypeDrink.verde when card._cardData.name == "Colmillo Dorado" => true,
+            (int)TypeDrink.violeta when card._cardData.name == "Gin Negro" => true,
+            (int)TypeDrink.gris when card._cardData.name == "Cerveza Doble Onix" => true,
+            _ => false
+        };
 
-                
-                if (!posCard.gameObject.activeInHierarchy)
-                {
-                    beer.SetActive(false);
-                }
-                else 
-                {
-                    beer.SetActive(true);
-                }
-                _coroutine = _context.StartCoroutine(Used(posCard));
-                posCard.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            }
-            else 
-            {
-                Debug.LogError("Bebida INCORRECTA!");
+        Debug.LogError(isCorrect ? "<color=blue>Bebida CORRECTA!</color>" : "<color=red>Bebida INCORRECTA!</color>");
 
-                if (!posCard.gameObject.activeInHierarchy)
-                {
-                    beer.SetActive(false);
-                }
-                else
-                {
-                    beer.SetActive(true);
-                }
-                _coroutine = _context.StartCoroutine(Used(posCard));
-                posCard.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        // Mostrar/ocultar la cerveza
+        beer.SetActive(card.gameObject.activeInHierarchy);
 
-            }
-        }
-        else if(result == (int)TypeDrink.verde && posCard.transform.rotation == Quaternion.identity)
-        {
-            if (posCard._cardData.name == "Colmillo Dorado")
-            {
-                Debug.LogError("Bebida CORRECTA!");
-                if (!posCard.gameObject.activeInHierarchy)
-                {
-                    beer.SetActive(false);
-                }
-                else
-                {
-                    beer.SetActive(true);
-                }
-                _coroutine = _context.StartCoroutine(Used(posCard));
-                posCard.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            }
-            else
-            {
-                
-                Debug.LogError("Bebida INCORRECTA!");
-                if (!posCard.gameObject.activeInHierarchy)
-                {
-                    beer.SetActive(false);
-                }
-                else
-                {
-                    beer.SetActive(true);
-                }
-                _coroutine = _context.StartCoroutine(Used(posCard));
-                posCard.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            }
-
-        }
-        else if(result == (int)TypeDrink.violeta && posCard.transform.rotation == Quaternion.identity)
-        {
-            if (posCard._cardData.name == "Gin Negro")
-            {
-                Debug.LogError("Bebida CORRECTA!");
-                if (!posCard.gameObject.activeInHierarchy)
-                {
-                    beer.SetActive(false);
-                }
-                else
-                {
-                    beer.SetActive(true);
-                }
-                _coroutine = _context.StartCoroutine(Used(posCard));
-                posCard.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            }
-            else
-            {
-                Debug.LogError("Bebida INCORRECTA!");
-                if (!posCard.gameObject.activeInHierarchy)
-                {
-                    beer.SetActive(false);
-                }
-                else
-                {
-                    beer.SetActive(true);
-                }
-                _coroutine = _context.StartCoroutine(Used(posCard));
-                posCard.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            }
-        }
-        else if(result == (int)TypeDrink.gris && posCard.transform.rotation == Quaternion.identity)
-        {
-            if (posCard._cardData.name == "Cerveza Doble Onix")
-            {
-                Debug.LogError("Bebida CORRECTA!");
-                if (!posCard.gameObject.activeInHierarchy)
-                {
-                    beer.SetActive(false);
-                }
-                else
-                {
-                    beer.SetActive(true);
-                }
-                _coroutine = _context.StartCoroutine(Used(posCard));
-                posCard.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            }
-            else
-            {
-                Debug.LogError("Bebida INCORRECTA!");
-                if (!posCard.gameObject.activeInHierarchy)
-                {
-                    beer.SetActive(false);
-                }
-                else
-                {
-                    beer.SetActive(true);
-                }
-                _coroutine = _context.StartCoroutine(Used(posCard));
-                posCard.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            }
-        }
-
+        _coroutine = _context.StartCoroutine(Used(card));
+        card.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
-    public enum TypeDrink
+    private IEnumerator Used(Card card)
+    {
+        yield return new WaitForSeconds(3);
+        card.gameObject.SetActive(false);
+    }
+
+    private enum TypeDrink
     {
         roja,
         verde,
         violeta,
         gris
-
-
     }
-
-    IEnumerator Used(Card card) 
-    {
-
-        yield return new WaitForSeconds(3);
-        card.gameObject.SetActive(false);
-    }
-
-
 }

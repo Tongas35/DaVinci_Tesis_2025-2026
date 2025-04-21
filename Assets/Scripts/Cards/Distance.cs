@@ -5,6 +5,7 @@ public class Distance<T> where T : Component
 {
 
     List<T> _distances;
+    List<T> _table;
     Transform _transform;
 
 
@@ -12,6 +13,12 @@ public class Distance<T> where T : Component
     {
         _distances = distances;
         _transform = transform;
+        
+    }
+
+    public Distance(List<T> table)
+    {
+        _table = table;
     }
 
     public T SlotsCards()
@@ -30,5 +37,24 @@ public class Distance<T> where T : Component
         }
 
         return closest;
+    }
+
+
+
+    public List<T> TableFull() 
+    {
+        List<T> shuffledTable = new List<T>(_table); 
+        int n = shuffledTable.Count;
+
+        for (int i = 0; i < n; i++)
+        {
+            int j = Random.Range(i, n);
+            // Intercambia elementos i y j
+            T temp = shuffledTable[i];
+            shuffledTable[i] = shuffledTable[j];
+            shuffledTable[j] = temp;
+        }
+
+        return shuffledTable;
     }
 }

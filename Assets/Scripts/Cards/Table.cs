@@ -14,7 +14,17 @@ public class Table : MonoBehaviour
         
         
     }
+    public bool IsOccupied { get; private set; }
 
+    public void Assign()
+    {
+        IsOccupied = true;
+    }
+
+    public void Release()
+    {
+        IsOccupied = false;
+    }
 
 
 }
