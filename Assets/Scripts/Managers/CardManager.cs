@@ -19,7 +19,7 @@ public class CardManger : MonoBehaviour
     void Start()
     {
         _dragAndDrop = new DragAndDrop(transform, CardDataVariation.CustomRotation, CardDataVariation.PositionConfig);
-        _tableOnHand = new TableOnHand(this, CardDataVariation.AllSlotPositions);
+        //_tableOnHand = new TableOnHand(this, CardDataVariation.AllSlotPositions);
     }
 
     void OnMouseDown()
@@ -38,16 +38,16 @@ public class CardManger : MonoBehaviour
     {
         if (currentPosition == Position.Hand)
         {
-            var (pos, rot) = _tableOnHand.FindNearestSlot();
-            transform.position = pos;
-            transform.rotation = Quaternion.Euler(rot);
+            //var (pos, rot) = _tableOnHand.FindNearestSlot();
+            //transform.position = pos;
+            //transform.rotation = Quaternion.Euler(rot);
             currentPosition = Position.Spawn;
 
-            // Si se soltó sobre un cliente:
+            // Si se baja sobre un cliente:
             var hit = Physics.Raycast(transform.position, Vector3.down, out RaycastHit info, 1f);
             if (hit && info.collider.TryGetComponent<Client>(out var cust))
             {
-                OrderManager.Instance.ProcessOrder(this, cust);
+                //OrderManager.Instance.ProcessOrder(this, cust);
             }
         }
     }

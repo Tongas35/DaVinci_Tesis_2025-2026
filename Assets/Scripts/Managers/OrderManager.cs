@@ -25,7 +25,7 @@ public class OrderManager : MonoBehaviour
     /// </summary>
     public void ProcessOrder(Card card, Client customer)
     {
-        bool success = (card.CardData.CardTypeProperty == customer.OrderType);
+        /*bool success = (card.CardData.CardTypeProperty == customer.OrderType);
         if (success)
         {
             // Ejemplo: +gold y +reputation, valores a ajustar
@@ -35,7 +35,7 @@ public class OrderManager : MonoBehaviour
         else
         {
             EconomyManager.Instance.AddReputation(-10);
-        }
+        }*/
         // Descarta la carta
         PlayerDeckManager.Instance.DiscardCard(card);
         Destroy(card.gameObject);
