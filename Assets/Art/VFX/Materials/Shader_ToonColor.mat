@@ -51,11 +51,11 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ToonShader: 0.25
+    - _ToonShader: 0.22
     - _ToonToneMAX_OUT: 2.5
-    - _ToonToneMIN_OUT: -0.3
+    - _ToonToneMIN_OUT: -0.45
     m_Colors:
-    - _FullColor: {r: 0.3207547, g: 0.18523712, b: 0.1255785, a: 1}
+    - _FullColor: {r: 0.15566039, g: 0.055435658, b: 0.012482204, a: 1}
     - _RemapTone: {r: -0.3, g: 6, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2187785466974801289
