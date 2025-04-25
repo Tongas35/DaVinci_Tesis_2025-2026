@@ -25,12 +25,12 @@ public class SpawnState : States
 
         if (table != null)
         {
-            _client.GoToTable(table); // método que tengas para mover al cliente
+            _client.GoToTable(table); // metodo que tengas para mover al cliente
         }
         else
         {
             Debug.Log("No hay mesas disponibles");
-            // podrías cambiar de estado, esperar, o hacer otra cosa
+            
         }
     }
 

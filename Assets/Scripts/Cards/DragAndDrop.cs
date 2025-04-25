@@ -41,6 +41,8 @@ public class DragAndDrop
     /// </summary>
     internal void OnMouseDragCard()
     {
+
+
             _transform.position = GetMouseWorldPos() + _offset; // mueve el objeto sin hacer un salto
             bool isMoving = _transform.position != _lastPosition;
 

@@ -31,37 +31,37 @@ public class Order
 
     public void OrderAction(Image orderActive, Card card, GameObject beer)
     {
-        //if (orderActive == null || card == null || card._cardData == null)
-        //{
-        //    Debug.LogError("null");
-        //    return;
-        //}
 
-        int result = orderActive.name switch
+
+
+        if (card.transform.rotation == Quaternion.identity) 
         {
-            "cerveza carnelian" => (int)TypeDrink.roja,
-            "colmillo dorado" => (int)TypeDrink.verde,
-            "gin negro" => (int)TypeDrink.violeta,
-            "cerveza doble onix" => (int)TypeDrink.gris,
-            _ => 5
-        };
+            int result = orderActive.name switch
+            {
+                "cerveza carnelian" => (int)TypeDrink.roja,
+                "colmillo dorado" => (int)TypeDrink.verde,
+                "gin negro" => (int)TypeDrink.violeta,
+                "cerveza doble onix" => (int)TypeDrink.gris,
+                _ => 5
+            };
 
-        bool isCorrect = result switch
-        {
-            (int)TypeDrink.roja when card._cardData.name == "Cerveza Carnelian" => true,
-            (int)TypeDrink.verde when card._cardData.name == "Colmillo Dorado" => true,
-            (int)TypeDrink.violeta when card._cardData.name == "Gin Negro" => true,
-            (int)TypeDrink.gris when card._cardData.name == "Cerveza Doble Onix" => true,
-            _ => false
-        };
+            bool isCorrect = result switch
+            {
+                (int)TypeDrink.roja when card._cardData.name == "Cerveza Carnelian" => true,
+                (int)TypeDrink.verde when card._cardData.name == "Colmillo Dorado" => true,
+                (int)TypeDrink.violeta when card._cardData.name == "Gin Negro" => true,
+                (int)TypeDrink.gris when card._cardData.name == "Cerveza Doble Onix" => true,
+                _ => false
+            };
 
-        Debug.LogError(isCorrect ? "<color=blue>Bebida CORRECTA!</color>" : "<color=red>Bebida INCORRECTA!</color>");
+            Debug.LogError(isCorrect ? "<color=blue>Bebida CORRECTA!</color>" : "<color=red>Bebida INCORRECTA!</color>");
 
-        // Mostrar/ocultar la cerveza
-        beer.SetActive(card.gameObject.activeInHierarchy);
+            // Mostrar/ocultar la cerveza
+            beer.SetActive(card.gameObject.activeInHierarchy);
 
-        _coroutine = _context.StartCoroutine(Used(card));
-        card.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            _coroutine = _context.StartCoroutine(Used(card));
+            card.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
     }
 
     private IEnumerator Used(Card card)

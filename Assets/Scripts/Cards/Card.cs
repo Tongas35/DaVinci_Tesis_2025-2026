@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
     DragAndDrop _dragAndDrop;
     TableOnHand _tableOnHand;
-    public Elf AssignedElf { get; set; }
-
     
+
     public static event Action<Card, Elf> onCardPlaced;
 
     [SerializeField]
@@ -46,7 +44,7 @@ public class Card : MonoBehaviour
         {
             _tableOnHand.GoObjetive();
 
-
+            // Encuentra el elfo más cercano
             Elf targetElf = null;
             float minDistance = Mathf.Infinity;
             Vector3 cardPosition = transform.position;
@@ -61,15 +59,14 @@ public class Card : MonoBehaviour
                 }
             }
 
-            
             if (targetElf != null)
             {
-                AssignedElf = targetElf;
+                
                 onCardPlaced?.Invoke(this, targetElf);
             }
             else
             {
-                Debug.LogWarning("no se encontro un Elf cercano para esta carta");
+                Debug.LogWarning("No se encontró un Elf cercano para esta carta.");
             }
         }
         else if (currentPosition == Position.Spawn)
@@ -94,6 +91,6 @@ public class Card : MonoBehaviour
     {
         Spawn,
         Hand,
-        Discart
+        Discard
     }
 }

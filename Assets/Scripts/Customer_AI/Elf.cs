@@ -12,13 +12,11 @@ public class Elf : MonoBehaviour
     private bool isMoving = false;
     private Vector3 targetPosition;
 
-    
     private Image img;
     public Image globe;
     private Order _order;
     [SerializeField]
     List<Image> _orders;
-   
 
     public GameObject beer;
 
@@ -26,25 +24,26 @@ public class Elf : MonoBehaviour
     {
         _fsmClient = new FSMClient();
         _fsmClient.AddState(StatesEnum.Spawn, new SpawnState(this));
+        _fsmClient.AddState(StatesEnum.Waiting, new WaitingState(this));
         _fsmClient.AddState(StatesEnum.Consuming, new ConsumingState(this));
         _fsmClient.AddState(StatesEnum.Leaving, new LeavingState());
-        _fsmClient.AddState(StatesEnum.Waiting, new WaitingState(this));
         _fsmClient.ChangeState(StatesEnum.Spawn);
         _order = new Order(_orders, transform, this);
         globe.gameObject.SetActive(false);
-
     }
 
     private void Update()
     {
         _fsmClient.VirtualUpdate();
     }
+
     public void GoToTable(Table table)
     {
         targetPosition = table.transform.position;
         isMoving = true;
     }
-    public void MoveToTarget() 
+
+    public void MoveToTarget()
     {
         if (!isMoving) return;
         Vector3 dir = (targetPosition - transform.position).normalized;
@@ -53,12 +52,12 @@ public class Elf : MonoBehaviour
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             isMoving = false;
-            
+
             _fsmClient.ChangeState(StatesEnum.Waiting);
         }
     }
 
-    public void Globe() 
+    public void Globe()
     {
         img = _order.OrderList();
         globe.gameObject.SetActive(true);
@@ -66,15 +65,11 @@ public class Elf : MonoBehaviour
         globe.transform.position = transform.position + new Vector3(5, 12, 0);
         globe.transform.LookAt(Camera.main.transform);
         globe.transform.Rotate(0, 180, 0);
-
-        
-
     }
 
     public void OrderActionActive(Card placedCard)
     {
         _order.OrderAction(img, placedCard, beer);
-
     }
 
     public void NotifyCardPlaced()
@@ -83,9 +78,31 @@ public class Elf : MonoBehaviour
         _fsmClient.ChangeState(StatesEnum.Consuming);
     }
 
-    public IEnumerator Timer() 
+    public IEnumerator Timer()
     {
         yield return new WaitForSeconds(4);
         _fsmClient.ChangeState(StatesEnum.Leaving);
+    }
+
+    // Suscripción a los eventos cuando entra en el estado Waiting
+    public void EnteredWaiting()
+    {
+        Card.onCardPlaced += OnCardPlaced;
+    }
+
+    // Desuscripción cuando sale del estado Waiting
+    public void ExitedWaiting()
+    {
+        Card.onCardPlaced -= OnCardPlaced;
+    }
+
+    // Maneja el evento cuando una carta se coloca
+    private void OnCardPlaced(Card card, Elf elf)
+    {
+        if (elf != this) return; // Asegura que el elfo correcto reciba la carta
+
+        Debug.Log("Carta recibida por el elfo correcto.");
+        OrderActionActive(card);
+        _fsmClient.ChangeState(StatesEnum.Consuming);
     }
 }

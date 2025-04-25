@@ -41,6 +41,7 @@ public class Distance<T> where T : Component
 
 
 
+
     public List<T> TableFull() 
     {
         List<T> shuffledTable = new List<T>(_table); 

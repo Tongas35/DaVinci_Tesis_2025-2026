@@ -2,40 +2,26 @@ using UnityEngine;
 
 public class ConsumingState : States
 {
-    Elf _client;
-    
+    private Elf _client;
+
     public ConsumingState(Elf client)
     {
         _client = client;
-        
     }
 
     public override void OnEnter()
     {
-        
-
-        _client.Globe();
-
-        Card.onCardPlaced += HandleCardPlaced;
+        _client.globe.gameObject.SetActive(false);
+        _fsm.ChangeState(StatesEnum.Leaving); // Cambia al estado Leaving después de consumir
     }
 
     public override void OnExit()
     {
-        Card.onCardPlaced -= HandleCardPlaced;
+        // Aquí puedes agregar lógica cuando se sale del estado, si es necesario
     }
 
     public override void OnUpdate()
     {
-        
-        
-        _client.globe.gameObject.SetActive(false);
-    }
-
-    private void HandleCardPlaced(Card card, Elf elf)
-    {
-        if (elf == _client)
-        {
-            _client.OrderActionActive(card);
-        }
+        // No es necesario realizar nada aquí por ahora
     }
 }

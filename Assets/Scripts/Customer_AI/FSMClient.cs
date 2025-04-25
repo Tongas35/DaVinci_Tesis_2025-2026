@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public class FSMClient
 {
     private Dictionary<StatesEnum, States> _allStates = new Dictionary<StatesEnum, States>();
-    private States _currentState;
+    public States _currentState;
 
     public void AddState(StatesEnum name, States state)
     {
