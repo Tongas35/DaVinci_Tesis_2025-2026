@@ -47,7 +47,7 @@ public class Card : MonoBehaviour
         {
             _tableOnHand.GoObjetive();
 
-            // Encuentra el elfo más cercano
+           
             Elf targetElf = null;
             float minDistance = Mathf.Infinity;
             Vector3 cardPosition = transform.position;
@@ -69,7 +69,7 @@ public class Card : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("No se encontró un Elf cercano para esta carta.");
+                Debug.LogWarning("no se encontro un Elf cercano");
             }
         }
         else if (currentPosition == Position.Spawn)

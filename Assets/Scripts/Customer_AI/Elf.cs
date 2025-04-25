@@ -115,7 +115,7 @@ public class Elf : MonoBehaviour
 
         
 
-        // 
+        
         while (Vector3.Distance(transform.position, targetPositionExit) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(
