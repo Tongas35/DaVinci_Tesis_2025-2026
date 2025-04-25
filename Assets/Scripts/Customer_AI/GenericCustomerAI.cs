@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
 
 public abstract class GenericCustomerAI : MonoBehaviour
 {
