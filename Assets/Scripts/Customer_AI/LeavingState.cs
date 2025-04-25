@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class LeavingState : States
 {
-    public LeavingState()
+    Elf _elf;
+    public LeavingState(Elf elf)
     {
-        
+        _elf = elf;
     }
 
     public override void OnEnter()
     {
-        
+        _elf.StartCoroutine(_elf.ExitBar());
+        Debug.Log("asdasda");
     }
 
     public override void OnExit()

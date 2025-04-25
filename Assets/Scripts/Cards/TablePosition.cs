@@ -48,6 +48,15 @@ public class TablePosition
             case TableID.TableSix:
                 _data.TableSix.position = newPosition;
                 break;
+            case TableID.TableSeven:
+                _data.TableSeven.position = newPosition;
+                break;
+            case TableID.TableEight:
+                _data.TableEight.position = newPosition;
+                break;
+            case TableID.TableNine:
+                _data.TableNine.position = newPosition;
+                break;
         }
 
         
@@ -66,6 +75,9 @@ public class TablePosition
             TableID.TableFour => _data.TableFour,
             TableID.TableFive => _data.TableFive,
             TableID.TableSix => _data.TableSix,
+            TableID.TableSeven => _data.TableSeven,
+            TableID.TableEight => _data.TableEight,
+            TableID.TableNine => _data.TableNine,
             _ => throw new System.ArgumentOutOfRangeException(nameof(_tableID), _tableID, "valor de tableID no soportado")
         };
 

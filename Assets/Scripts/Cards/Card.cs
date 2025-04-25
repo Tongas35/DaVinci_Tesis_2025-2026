@@ -31,7 +31,10 @@ public class Card : MonoBehaviour
             _positionAndRotation.TableThree,
             _positionAndRotation.TableFour,
             _positionAndRotation.TableFive,
-            _positionAndRotation.TableSix
+            _positionAndRotation.TableSix,
+            _positionAndRotation.TableSeven,
+            _positionAndRotation.TableEight,
+            _positionAndRotation.TableNine,
         };
 
         _dragAndDrop = new DragAndDrop(transform, customRotation, _positionAndRotation);

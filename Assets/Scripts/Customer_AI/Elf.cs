@@ -11,7 +11,7 @@ public class Elf : MonoBehaviour
     FSMClient _fsmClient;
     private bool isMoving = false;
     private Vector3 targetPosition;
-
+    private Vector3 targetPositionExit;
     private Image img;
     public Image globe;
     private Order _order;
@@ -26,10 +26,11 @@ public class Elf : MonoBehaviour
         _fsmClient.AddState(StatesEnum.Spawn, new SpawnState(this));
         _fsmClient.AddState(StatesEnum.Waiting, new WaitingState(this));
         _fsmClient.AddState(StatesEnum.Consuming, new ConsumingState(this));
-        _fsmClient.AddState(StatesEnum.Leaving, new LeavingState());
+        _fsmClient.AddState(StatesEnum.Leaving, new LeavingState(this));
         _fsmClient.ChangeState(StatesEnum.Spawn);
         _order = new Order(_orders, transform, this);
         globe.gameObject.SetActive(false);
+        targetPositionExit = new Vector3(-19.5f, -5.4f, 57.92f);
     }
 
     private void Update()
@@ -84,25 +85,49 @@ public class Elf : MonoBehaviour
         _fsmClient.ChangeState(StatesEnum.Leaving);
     }
 
-    // Suscripción a los eventos cuando entra en el estado Waiting
+    
     public void EnteredWaiting()
     {
         Card.onCardPlaced += OnCardPlaced;
     }
 
-    // Desuscripción cuando sale del estado Waiting
+    
     public void ExitedWaiting()
     {
         Card.onCardPlaced -= OnCardPlaced;
     }
 
-    // Maneja el evento cuando una carta se coloca
+
     private void OnCardPlaced(Card card, Elf elf)
     {
-        if (elf != this) return; // Asegura que el elfo correcto reciba la carta
+        if (elf != this) return; 
 
         Debug.Log("Carta recibida por el elfo correcto.");
         OrderActionActive(card);
         _fsmClient.ChangeState(StatesEnum.Consuming);
+    }
+
+
+
+    public IEnumerator ExitBar() 
+    {
+        yield return new WaitForSeconds(5f);
+
+        
+
+        // 
+        while (Vector3.Distance(transform.position, targetPositionExit) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                targetPositionExit,
+                10 * Time.deltaTime
+            );
+            yield return null; 
+        }
+
+        Debug.Log("elfo salio del bar");
+        gameObject.SetActive(false);
+
     }
 }

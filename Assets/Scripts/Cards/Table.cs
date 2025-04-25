@@ -35,5 +35,8 @@ public enum TableID
     TableThree, 
     TableFour, 
     TableFive, 
-    TableSix 
+    TableSix,
+    TableSeven,
+    TableEight,
+    TableNine
 }

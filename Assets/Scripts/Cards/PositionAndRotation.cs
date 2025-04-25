@@ -31,6 +31,12 @@ public class PositionAndRotation : ScriptableObject
     private TransformAndRotation tableFive;
     [SerializeField]
     private TransformAndRotation tableSix;
+    [SerializeField]
+    private TransformAndRotation tableSeven;
+    [SerializeField]
+    private TransformAndRotation tableEight;
+    [SerializeField]
+    private TransformAndRotation tableNine;
 
 
     public TransformAndRotation HandOne => handOne;
@@ -43,4 +49,7 @@ public class PositionAndRotation : ScriptableObject
     public TransformAndRotation TableFour => tableFour;
     public TransformAndRotation TableFive => tableFive;
     public TransformAndRotation TableSix => tableSix;
+    public TransformAndRotation TableSeven => tableSeven;
+    public TransformAndRotation TableEight => tableEight;
+    public TransformAndRotation TableNine => tableNine;
 }

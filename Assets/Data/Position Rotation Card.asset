@@ -13,32 +13,41 @@ MonoBehaviour:
   m_Name: Position Rotation Card
   m_EditorClassIdentifier: 
   handOne:
-    position: {x: 20.99, y: -3.6, z: -24}
+    position: {x: -10.94, y: 0.7400002, z: -10.35}
     rotation: {x: 75, y: 0, z: 0}
   handTwo:
-    position: {x: 22.66, y: -3.6, z: -24}
+    position: {x: -9.269997, y: 0.6399999, z: -10.35}
     rotation: {x: 75, y: 0, z: 0}
   handThree:
-    position: {x: 24.26, y: -3.6, z: -24}
+    position: {x: -7.669999, y: 0.6399999, z: -10.45}
     rotation: {x: 75, y: 0, z: 0}
   handFour:
-    position: {x: 25.66, y: -3.6, z: -24}
+    position: {x: -6.269997, y: 0.6399999, z: -10.45}
     rotation: {x: 75, y: 0, z: 0}
   tableOne:
-    position: {x: 3.7, y: 17, z: -20.83}
+    position: {x: 4.94738, y: 0.74, z: 3.046452}
     rotation: {x: 0, y: 0, z: 0}
   tableTwo:
-    position: {x: 23.45, y: 17, z: -20.83}
+    position: {x: -4.80262, y: 0.74, z: 4.296453}
     rotation: {x: 0, y: 0, z: 0}
   tableThree:
-    position: {x: 46.09, y: 17, z: -20.83}
+    position: {x: -13.80262, y: 0.74, z: 1.046452}
     rotation: {x: 0, y: 0, z: 0}
   tableFour:
-    position: {x: 3.7, y: 26, z: -20.83}
+    position: {x: -15.30262, y: 0.74, z: -4.953547}
     rotation: {x: 0, y: 0, z: 0}
   tableFive:
-    position: {x: 23.45, y: 26, z: -20.83}
+    position: {x: -14.30262, y: 0.74, z: 8.046453}
     rotation: {x: 0, y: 0, z: 0}
   tableSix:
-    position: {x: 46.09, y: 26, z: -20.83}
+    position: {x: -6.55262, y: 0.74, z: 12.04645}
     rotation: {x: 0, y: 0, z: 0}
+  tableSeven:
+    position: {x: 5.44738, y: 0.74, z: 9.796453}
+    rotation: {x: 75, y: 0, z: 0}
+  tableEight:
+    position: {x: -7.55262, y: 0.74, z: -2.953547}
+    rotation: {x: 75, y: 0, z: 0}
+  tableNine:
+    position: {x: -0.05261993, y: 0.74, z: 14.29645}
+    rotation: {x: 75, y: 0, z: 0}
