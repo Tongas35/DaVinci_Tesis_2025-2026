@@ -13,41 +13,41 @@ MonoBehaviour:
   m_Name: Position Rotation Card
   m_EditorClassIdentifier: 
   handOne:
-    position: {x: -10.94, y: 0.7400002, z: -10.35}
+    position: {x: -10.77163, y: 0.5718884, z: -10.37002}
     rotation: {x: 75, y: 0, z: 0}
   handTwo:
-    position: {x: -9.269997, y: 0.6399999, z: -10.35}
+    position: {x: -9.781628, y: 0.5718884, z: -10.37002}
     rotation: {x: 75, y: 0, z: 0}
   handThree:
-    position: {x: -7.669999, y: 0.6399999, z: -10.45}
+    position: {x: -8.851627, y: 0.5718884, z: -10.37002}
     rotation: {x: 75, y: 0, z: 0}
   handFour:
-    position: {x: -6.269997, y: 0.6399999, z: -10.45}
+    position: {x: -8.131628, y: 0.5718884, z: -10.37002}
     rotation: {x: 75, y: 0, z: 0}
   tableOne:
-    position: {x: 4.94738, y: 0.74, z: 3.046452}
+    position: {x: 9.44174, y: -6.115924, z: 14.364782}
     rotation: {x: 0, y: 0, z: 0}
   tableTwo:
-    position: {x: -4.80262, y: 0.74, z: 4.296453}
+    position: {x: -4.6940093, y: -6.5300055, z: 16.895464}
     rotation: {x: 0, y: 0, z: 0}
   tableThree:
-    position: {x: -13.80262, y: 0.74, z: 1.046452}
+    position: {x: -18.62298, y: -7.6230574, z: 13.753927}
     rotation: {x: 0, y: 0, z: 0}
   tableFour:
-    position: {x: -15.30262, y: 0.74, z: -4.953547}
+    position: {x: -23.440027, y: -11.316453, z: 8.613094}
     rotation: {x: 0, y: 0, z: 0}
   tableFive:
-    position: {x: -14.30262, y: 0.74, z: 8.046453}
+    position: {x: -16.950804, y: -3.6067095, z: 16.650324}
     rotation: {x: 0, y: 0, z: 0}
   tableSix:
-    position: {x: -6.55262, y: 0.74, z: 12.04645}
+    position: {x: -6.8621464, y: -2.354003, z: 18.983862}
     rotation: {x: 0, y: 0, z: 0}
   tableSeven:
-    position: {x: 5.44738, y: 0.74, z: 9.796453}
-    rotation: {x: 75, y: 0, z: 0}
+    position: {x: 7.7664685, y: -2.6288328, z: 16.852064}
+    rotation: {x: 0, y: 0, z: 0}
   tableEight:
-    position: {x: -7.55262, y: 0.74, z: -2.953547}
-    rotation: {x: 75, y: 0, z: 0}
+    position: {x: -9.649615, y: -11.912032, z: 12.945829}
+    rotation: {x: 0, y: 0, z: 0}
   tableNine:
-    position: {x: -0.05261993, y: 0.74, z: 14.29645}
-    rotation: {x: 75, y: 0, z: 0}
+    position: {x: 0.60547113, y: -1.2723341, z: 19.106016}
+    rotation: {x: 0, y: 0, z: 0}

@@ -63,7 +63,7 @@ public class Elf : MonoBehaviour
         img = _order.OrderList();
         globe.gameObject.SetActive(true);
         img.gameObject.SetActive(true);
-        globe.transform.position = transform.position + new Vector3(5, 12, 0);
+        globe.transform.position = transform.position + new Vector3(2.5f, 5, 0);
         globe.transform.LookAt(Camera.main.transform);
         globe.transform.Rotate(0, 180, 0);
     }
