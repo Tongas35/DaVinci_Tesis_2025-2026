@@ -1,10 +1,10 @@
 using UnityEngine;
+using System.Reflection;
 
-public class TablePosition 
+public class TablePosition
 {
-  
     private Vector3 _storedPosition;
-    private Vector3 _storedRotation; 
+    private Vector3 _storedRotation;
     private TableID _tableID;
     private PositionAndRotation _data;
     private Transform _transform;
@@ -13,78 +13,53 @@ public class TablePosition
     {
         _data = data;
         _tableID = tableID;
-        _transform = transform; 
+        _transform = transform;
     }
 
-    public void AddPosition() 
+    public void AddPosition()
     {
         Camera cam = Camera.main;
-
         Vector3 direction = (_transform.position - cam.transform.position).normalized;
-
-
-        float distance = 45f;
-
-      
+        float distance = 20f;
         Vector3 newPosition = cam.transform.position + direction * distance;
 
-        switch (_tableID)
-        {
-            case TableID.TableOne:
-                _data.TableOne.position = newPosition;
-                break;
-            case TableID.TableTwo:
-                _data.TableTwo.position = newPosition;
-                break;
-            case TableID.TableThree:
-                _data.TableThree.position = newPosition;
-                break;
-            case TableID.TableFour:
-                _data.TableFour.position = newPosition;
-                break;
-            case TableID.TableFive:
-                _data.TableFive.position = newPosition;
-                break;
-            case TableID.TableSix:
-                _data.TableSix.position = newPosition;
-                break;
-            case TableID.TableSeven:
-                _data.TableSeven.position = newPosition;
-                break;
-            case TableID.TableEight:
-                _data.TableEight.position = newPosition;
-                break;
-            case TableID.TableNine:
-                _data.TableNine.position = newPosition;
-                break;
-        }
-
-        
-
+        // Usamos reflection
+        TransformAndRotation config = GetFieldValue();
+        config.position = newPosition;
+        SetFieldValue(config);
     }
 
-    public (Vector3, Vector3) DetectPosition() 
+    public (Vector3, Vector3) DetectPosition()
     {
-
-
-        TransformAndRotation config = _tableID switch
-        {
-            TableID.TableOne => _data.TableOne,
-            TableID.TableTwo => _data.TableTwo,
-            TableID.TableThree => _data.TableThree,
-            TableID.TableFour => _data.TableFour,
-            TableID.TableFive => _data.TableFive,
-            TableID.TableSix => _data.TableSix,
-            TableID.TableSeven => _data.TableSeven,
-            TableID.TableEight => _data.TableEight,
-            TableID.TableNine => _data.TableNine,
-            _ => throw new System.ArgumentOutOfRangeException(nameof(_tableID), _tableID, "valor de tableID no soportado")
-        };
-
-            _storedPosition = config.position;
-            _storedRotation = config.rotation;
-
+        TransformAndRotation config = GetFieldValue();
+        _storedPosition = config.position;
+        _storedRotation = config.rotation;
         return (_storedPosition, _storedRotation);
     }
 
+    private TransformAndRotation GetFieldValue()
+    {
+        string fieldName = char.ToLowerInvariant(_tableID.ToString()[0]) + _tableID.ToString().Substring(1);
+        FieldInfo fieldInfo = typeof(PositionAndRotation).GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+
+        if (fieldInfo == null)
+        {
+            throw new System.Exception($"No se encontró el campo '{fieldName}' en PositionAndRotation.");
+        }
+
+        return (TransformAndRotation)fieldInfo.GetValue(_data);
+    }
+
+    private void SetFieldValue(TransformAndRotation newValue)
+    {
+        string fieldName = char.ToLowerInvariant(_tableID.ToString()[0]) + _tableID.ToString().Substring(1);
+        FieldInfo fieldInfo = typeof(PositionAndRotation).GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+
+        if (fieldInfo == null)
+        {
+            throw new System.Exception($"No se encontró el campo '{fieldName}' en PositionAndRotation.");
+        }
+
+        fieldInfo.SetValue(_data, newValue);
+    }
 }
