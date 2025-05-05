@@ -75,7 +75,7 @@ public class Card : MonoBehaviour
                 Debug.Log(id.Serialize());
 
                 // 3) Comprobamos umbral de proximidad
-                float threshold = 17f;
+                float threshold = 5f;
                 if (Vector3.Distance(cardPos, slot.position) <= threshold)
                 {
                     // 4) Movemos la carta directamente al slot ocupado
@@ -120,7 +120,7 @@ public class Card : MonoBehaviour
 
     void OnMouseDrag()
     {
-        if (currentPosition == Position.Hand)
+        if (currentPosition == Position.Hand && HandManager.Instance.CheckAndFreeSlots() == 0)
             _dragAndDrop.OnMouseDragCard();
     }
 

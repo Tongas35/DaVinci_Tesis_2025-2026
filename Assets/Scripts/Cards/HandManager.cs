@@ -8,6 +8,7 @@ public class HandManager
     private readonly List<TransformAndRotation> _slots;
     private readonly Dictionary<int, Transform> _occupiedSlots;
     private const float MaxDistance = 5f;
+    private int availableSlot;
     public static HandManager Instance
     {
         get
@@ -70,7 +71,7 @@ public class HandManager
             return;
         }
 
-        int availableSlot = ReserveAvailableSlot(card.transform);
+        availableSlot = ReserveAvailableSlot(card.transform);
         if (availableSlot == -1)
         {
 
@@ -90,24 +91,32 @@ public class HandManager
         card.originalPosition = targetPos;
         card.originalRotation = targetRot;
 
+        
+
     }
 
-    private void CheckAndFreeSlots()
+    public int CheckAndFreeSlots()
     {
         var slotsToFree = new List<int>();
+
         foreach (var slot in _occupiedSlots)
         {
             Transform card = slot.Value;
-            if (card == null ||
-                !card.gameObject.activeInHierarchy)
+            if (card == null || !card.gameObject.activeInHierarchy)
             {
                 slotsToFree.Add(slot.Key);
             }
         }
+
         foreach (int slotIndex in slotsToFree)
         {
             _occupiedSlots.Remove(slotIndex);
         }
+
+        // Retornar la cantidad de slots disponibles
+        int totalSlots = 8; // Supón que defines cuántos slots hay en total
+        int usedSlots = _occupiedSlots.Count;
+        return totalSlots - usedSlots;
 
     }
 
