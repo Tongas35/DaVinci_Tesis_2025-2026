@@ -41,7 +41,11 @@ public class HandManager
             _positionAndRotation.HandOne,
             _positionAndRotation.HandTwo,
             _positionAndRotation.HandThree,
-            _positionAndRotation.HandFour
+            _positionAndRotation.HandFour,
+            _positionAndRotation.HandFive,
+            _positionAndRotation.HandSix,
+            _positionAndRotation.HandSeven,
+            _positionAndRotation.HandEight
         };
 
 

@@ -24,30 +24,42 @@ MonoBehaviour:
   handFour:
     position: {x: -8.131628, y: 0.5718884, z: -10.37002}
     rotation: {x: 75, y: 0, z: 0}
+  handFive:
+    position: {x: -7.331627, y: 0.5718884, z: -10.37002}
+    rotation: {x: 75, y: 0, z: 0}
+  handSix:
+    position: {x: -6.341628, y: 0.5718884, z: -10.37002}
+    rotation: {x: 75, y: 0, z: 0}
+  handSeven:
+    position: {x: -5.411627, y: 0.5718884, z: -10.37002}
+    rotation: {x: 75, y: 0, z: 0}
+  handEight:
+    position: {x: -4.691628, y: 0.5718884, z: -10.37002}
+    rotation: {x: 75, y: 0, z: 0}
   tableOne:
-    position: {x: 9.44174, y: -6.115924, z: 14.364782}
+    position: {x: 1.2747812, y: 4.9885597, z: -4.266038}
     rotation: {x: 0, y: 0, z: 0}
   tableTwo:
-    position: {x: -4.6940093, y: -6.5300055, z: 16.895464}
+    position: {x: -4.955883, y: 4.860626, z: -2.8232746}
     rotation: {x: 0, y: 0, z: 0}
   tableThree:
-    position: {x: -18.62298, y: -7.6230574, z: 13.753927}
+    position: {x: -11.839797, y: 4.1893435, z: -4.2522697}
     rotation: {x: 0, y: 0, z: 0}
   tableFour:
-    position: {x: -23.440027, y: -11.316453, z: 8.613094}
+    position: {x: -14.217754, y: 2.3646698, z: -6.8051453}
     rotation: {x: 0, y: 0, z: 0}
   tableFive:
-    position: {x: -16.950804, y: -3.6067095, z: 16.650324}
+    position: {x: -11.074754, y: 6.092147, z: -2.9172344}
     rotation: {x: 0, y: 0, z: 0}
   tableSix:
-    position: {x: -6.8621464, y: -2.354003, z: 18.983862}
+    position: {x: -6.843404, y: 6.728497, z: -1.9021492}
     rotation: {x: 0, y: 0, z: 0}
   tableSeven:
-    position: {x: 7.7664685, y: -2.6288328, z: 16.852064}
+    position: {x: 0.58227444, y: 6.669273, z: -3.090397}
     rotation: {x: 0, y: 0, z: 0}
   tableEight:
-    position: {x: -9.649615, y: -11.912032, z: 12.945829}
+    position: {x: -7.170808, y: 2.2075815, z: -4.620614}
     rotation: {x: 0, y: 0, z: 0}
   tableNine:
-    position: {x: 0.60547113, y: -1.2723341, z: 19.106016}
+    position: {x: -2.587932, y: 7.3423214, z: -1.9257507}
     rotation: {x: 0, y: 0, z: 0}

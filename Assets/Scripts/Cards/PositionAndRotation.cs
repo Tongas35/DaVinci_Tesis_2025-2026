@@ -20,6 +20,14 @@ public class PositionAndRotation : ScriptableObject
     [Tooltip("Posicion en la mano del jugador.")]
     private TransformAndRotation handFour;
     [SerializeField]
+    private TransformAndRotation handFive;
+    [SerializeField]
+    private TransformAndRotation handSix;
+    [SerializeField] 
+    private TransformAndRotation handSeven;
+    [SerializeField]
+    private TransformAndRotation handEight;
+    [SerializeField]
     private TransformAndRotation tableOne;
     [SerializeField]
     private TransformAndRotation tableTwo;
@@ -43,6 +51,10 @@ public class PositionAndRotation : ScriptableObject
     public TransformAndRotation HandTwo => handTwo;
     public TransformAndRotation HandThree => handThree;
     public TransformAndRotation HandFour => handFour;
+    public TransformAndRotation HandFive => handFive;
+    public TransformAndRotation HandSix => handSix;
+    public TransformAndRotation HandSeven => handSeven;
+    public TransformAndRotation HandEight => handEight;
     public TransformAndRotation TableOne => tableOne;
     public TransformAndRotation TableTwo => tableTwo;
     public TransformAndRotation TableThree => tableThree;
