@@ -60,7 +60,7 @@ public class Order
             beer.SetActive(card.gameObject.activeInHierarchy);
 
             _coroutine = _context.StartCoroutine(Used(card));
-            card.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            card.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         }
     }
 

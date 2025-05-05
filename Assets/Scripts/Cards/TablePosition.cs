@@ -20,7 +20,7 @@ public class TablePosition
     {
         Camera cam = Camera.main;
         Vector3 direction = (_transform.position - cam.transform.position).normalized;
-        float distance = 20f;
+        float distance = 15f;
         Vector3 newPosition = cam.transform.position + direction * distance;
 
         // Usamos reflection
