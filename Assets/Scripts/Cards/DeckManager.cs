@@ -7,7 +7,7 @@ public class DeckManager : MonoBehaviour
     public static DeckManager instance;
 
     
-    public List<Card> cards    = new List<Card>();
+    public List<Card> cards     = new List<Card>();
     [SerializeField]
     private Vector3 minPosition = new Vector3(-5f, 1f, -5f);
     [SerializeField]

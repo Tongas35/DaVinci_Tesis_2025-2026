@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
     DragAndDrop _dragAndDrop;
     TableOnHand _tableOnHand;
-    
+
+    [HideInInspector]
+    public Vector3 originalPosition;
+    [HideInInspector]
+    public Quaternion originalRotation;
+
 
     public static event Action<Card, Elf> onCardPlaced;
 
@@ -22,10 +29,7 @@ public class Card : MonoBehaviour
     {
         var slotPositions = new List<TransformAndRotation>
         {
-            _positionAndRotation.HandOne,
-            _positionAndRotation.HandTwo,
-            _positionAndRotation.HandThree,
-            _positionAndRotation.HandFour,
+
             _positionAndRotation.TableOne,
             _positionAndRotation.TableTwo,
             _positionAndRotation.TableThree,
@@ -39,42 +43,72 @@ public class Card : MonoBehaviour
 
         _dragAndDrop = new DragAndDrop(transform, customRotation, _positionAndRotation);
         _tableOnHand = new TableOnHand(this, slotPositions);
+
+        originalPosition = transform.position;
+        originalRotation = transform.rotation;
     }
 
     void OnMouseUp()
     {
         if (currentPosition == Position.Hand)
         {
-            _tableOnHand.GoObjetive();
-
-           
+            // 1) Buscamos el Elf más cercano
             Elf targetElf = null;
             float minDistance = Mathf.Infinity;
-            Vector3 cardPosition = transform.position;
-
+            Vector3 cardPos = transform.position;
             foreach (var elf in GameObject.FindObjectsOfType<Elf>())
             {
-                float distance = Vector3.Distance(cardPosition, elf.transform.position);
-                if (distance < minDistance)
+                float d = Vector3.Distance(cardPos, elf.transform.position);
+                if (d < minDistance)
                 {
-                    minDistance = distance;
+                    minDistance = d;
                     targetElf = elf;
                 }
             }
 
-            if (targetElf != null)
+            if (targetElf != null && targetElf.assignedTable != null)
             {
-                
-                onCardPlaced?.Invoke(this, targetElf);
+                // 2) Obtenemos la posición y rotación del slot ocupado
+                TableID id = targetElf.assignedTable._tableID;      // expongo TableID en Table
+                TransformAndRotation slot = GetTransformAndRotationFor(id);
+
+                Debug.Log(id.Serialize());
+
+                // 3) Comprobamos umbral de proximidad
+                float threshold = 4f;
+                if (Vector3.Distance(cardPos, slot.position) <= threshold)
+                {
+                    // 4) Movemos la carta directamente al slot ocupado
+                    transform.position = slot.position;
+                    transform.rotation = Quaternion.Euler(slot.rotation);
+                    currentPosition = Position.Discard;  // o el estado que toque
+
+                    onCardPlaced?.Invoke(this, targetElf);
+                }
+                else
+                {
+                    // No estaba cerca: la devolvemos a la mano
+                    transform.position = originalPosition;
+                    transform.rotation = originalRotation;
+                }
             }
             else
             {
-                Debug.LogWarning("no se encontro un Elf cercano");
+                Debug.LogWarning("No se encontro ningun Elf con mesa asignada");
+                transform.position = originalPosition;
+                transform.rotation = originalRotation;
             }
+
         }
         else if (currentPosition == Position.Spawn)
         {
             HandManager.Instance.MoveToNextSlot(this);
+        }
+        else 
+        {
+
+            transform.position = originalPosition;
+            transform.rotation = originalRotation;
         }
     }
 
@@ -90,6 +124,14 @@ public class Card : MonoBehaviour
             _dragAndDrop.OnMouseDragCard();
     }
 
+    private TransformAndRotation GetTransformAndRotationFor(TableID tableID)
+    {
+        string fieldName = char.ToLowerInvariant(tableID.ToString()[0])
+                         + tableID.ToString().Substring(1);
+        var fi = typeof(PositionAndRotation)
+                 .GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+        return (TransformAndRotation)fi.GetValue(_positionAndRotation);
+    }
     public enum Position
     {
         Spawn,

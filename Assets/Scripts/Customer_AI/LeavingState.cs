@@ -14,6 +14,7 @@ public class LeavingState : States
     {
         _elf.StartCoroutine(_elf.ExitBar());
         Debug.Log("asdasda");
+        _elf.assignedTable = null;
     }
 
     public override void OnExit()

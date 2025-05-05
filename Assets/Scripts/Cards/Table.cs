@@ -3,7 +3,7 @@ using UnityEngine;
 public class Table : MonoBehaviour
 {
     [SerializeField] private PositionAndRotation data;
-    [SerializeField] private TableID _tableID;
+    public TableID _tableID;
 
     TablePosition tablePosition;
 

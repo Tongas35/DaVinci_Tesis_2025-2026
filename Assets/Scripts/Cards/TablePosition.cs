@@ -44,7 +44,7 @@ public class TablePosition
 
         if (fieldInfo == null)
         {
-            throw new System.Exception($"No se encontró el campo '{fieldName}' en PositionAndRotation.");
+            throw new System.Exception($"No se encontro el campo '{fieldName}' en PositionAndRotation.");
         }
 
         return (TransformAndRotation)fieldInfo.GetValue(_data);
@@ -57,7 +57,7 @@ public class TablePosition
 
         if (fieldInfo == null)
         {
-            throw new System.Exception($"No se encontró el campo '{fieldName}' en PositionAndRotation.");
+            throw new System.Exception($"No se encontro el campo '{fieldName}' en PositionAndRotation.");
         }
 
         fieldInfo.SetValue(_data, newValue);

@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class SpawnState : States
 {
@@ -25,6 +26,7 @@ public class SpawnState : States
 
         if (table != null)
         {
+            _client.assignedTable = table;
             _client.GoToTable(table); // metodo que tengas para mover al cliente
         }
         else
@@ -36,7 +38,7 @@ public class SpawnState : States
 
     public override void OnExit()
     {
-
+        
     }
 
     public override void OnUpdate()

@@ -7,7 +7,9 @@ public class Elf : MonoBehaviour
 {
     private Distance<Table> _tableOrder;
     private List<Table> _tables;
-    Table assignedTable;
+
+    [HideInInspector]
+    public Table assignedTable;
     FSMClient _fsmClient;
     private bool isMoving = false;
     private Vector3 targetPosition;
@@ -31,6 +33,7 @@ public class Elf : MonoBehaviour
         _order = new Order(_orders, transform, this);
         globe.gameObject.SetActive(false);
         targetPositionExit = new Vector3(-19.5f, -5.4f, 57.92f);
+        beer.SetActive(false);
     }
 
     private void Update()
@@ -79,12 +82,6 @@ public class Elf : MonoBehaviour
         _fsmClient.ChangeState(StatesEnum.Consuming);
     }
 
-    public IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(4);
-        _fsmClient.ChangeState(StatesEnum.Leaving);
-    }
-
     
     public void EnteredWaiting()
     {
@@ -111,6 +108,9 @@ public class Elf : MonoBehaviour
 
     public IEnumerator ExitBar() 
     {
+        beer.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        beer.SetActive(false);
         yield return new WaitForSeconds(5f);
 
         

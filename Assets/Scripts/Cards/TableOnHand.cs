@@ -36,6 +36,7 @@ public class TableOnHand
 
     public Card GoObjetive() 
     {
+
         (Vector3 position, Vector3 rotation) slotObjetive = Slots();
 
         _card.transform.position = slotObjetive.position;

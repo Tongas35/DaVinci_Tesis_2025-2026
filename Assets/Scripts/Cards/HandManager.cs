@@ -82,7 +82,10 @@ public class HandManager
         card.transform.position = targetPos;
         card.transform.rotation = targetRot;
         card.currentPosition = Card.Position.Hand;
-        
+
+        card.originalPosition = targetPos;
+        card.originalRotation = targetRot;
+
     }
 
     private void CheckAndFreeSlots()
