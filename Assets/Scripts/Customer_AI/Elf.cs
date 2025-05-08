@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Elf : MonoBehaviour
+public class Elf : ClientBase
 {
     private Distance<Table> _tableOrder;
     private List<Table> _tables;
@@ -76,12 +76,6 @@ public class Elf : MonoBehaviour
         _order.OrderAction(img, placedCard, beer);
     }
 
-    public void NotifyCardPlaced()
-    {
-        Debug.Log("se coloco la carta.");
-        _fsmClient.ChangeState(StatesEnum.Consuming);
-    }
-
     
     public void EnteredWaiting()
     {
@@ -129,5 +123,10 @@ public class Elf : MonoBehaviour
         Debug.Log("elfo salio del bar");
         gameObject.SetActive(false);
 
+    }
+
+    public override void ActivateClient()
+    {
+        gameObject.SetActive(true);
     }
 }

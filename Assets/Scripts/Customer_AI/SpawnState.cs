@@ -27,7 +27,7 @@ public class SpawnState : States
         if (table != null)
         {
             _client.assignedTable = table;
-            _client.GoToTable(table); // metodo que tengas para mover al cliente
+            _client.GoToTable(table); // metodo para mover al cliente
         }
         else
         {
