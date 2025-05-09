@@ -38,5 +38,6 @@ public enum StatesEnum
     Spawn,
     Waiting,
     Consuming,
-    Leaving
+    Leaving,
+    Chaos
 }

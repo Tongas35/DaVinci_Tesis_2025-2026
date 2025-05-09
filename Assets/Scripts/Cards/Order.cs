@@ -7,13 +7,15 @@ using UnityEngine.UI;
 public class Order
 {
     private List<Image> _orders;
+    private List<Image> _chaosimg;
     private Transform _transform;
     private Coroutine _coroutine;
     private MonoBehaviour _context;
 
-    public Order(List<Image> orders, Transform transform, MonoBehaviour context)
+    public Order(List<Image> orders, Transform transform, MonoBehaviour context, List<Image> chaosimg)
     {
         _orders = orders;
+        _chaosimg = chaosimg;
         _transform = transform;
         _context = context;
     }
@@ -27,12 +29,16 @@ public class Order
         }
         return null;
     }
-
-
-    public void OrderAction(Image orderActive, Card card, GameObject beer)
+    public Image ChaosOne() 
     {
+        return _chaosimg[0];
+    }
 
-       
+
+    public bool OrderAction(Image orderActive, Card card, GameObject beer)
+    {
+        bool isCorrect = false;
+        
 
         if (card.transform.rotation == Quaternion.identity) 
         {
@@ -41,16 +47,18 @@ public class Order
                 "cerveza carnelian" => (int)TypeDrink.roja,
                 "colmillo dorado" => (int)TypeDrink.verde,
                 "gin negro" => (int)TypeDrink.violeta,
-                "cerveza doble onix" => (int)TypeDrink.gris,
+                "neblina silvestre" => (int)TypeDrink.blanco,
+                "desterrar alborotador" =>(int)TypeDrink.negro,
                 _ => 5
             };
 
-            bool isCorrect = result switch
+            isCorrect = result switch
             {
                 (int)TypeDrink.roja when card._cardData.name == "Cerveza Carnelian" => true,
                 (int)TypeDrink.verde when card._cardData.name == "Colmillo Dorado" => true,
                 (int)TypeDrink.violeta when card._cardData.name == "Gin Negro" => true,
-                (int)TypeDrink.gris when card._cardData.name == "Cerveza Doble Onix" => true,
+                (int)TypeDrink.blanco when card._cardData.name == "Neblina Silvestre" => true,
+                (int)TypeDrink.negro when card._cardData.name == "Desterrar al Alborotador" => true,
                 _ => false
             };
 
@@ -61,8 +69,11 @@ public class Order
 
             _coroutine = _context.StartCoroutine(Used(card));
             card.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-        }
             
+        }
+
+        return isCorrect;
+
     }
 
     private IEnumerator Used(Card card)
@@ -76,6 +87,7 @@ public class Order
         roja,
         verde,
         violeta,
-        gris
+        blanco,
+        negro
     }
 }

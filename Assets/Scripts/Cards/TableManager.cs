@@ -37,4 +37,27 @@ public class TableManager : MonoBehaviour
         chosen.Assign();
         return chosen;
     }
+
+    public Table GetClosestAvailableTable(Vector3 position)
+    {
+        Table closest = null;
+        float shortestDistance = float.MaxValue;
+
+        foreach (var table in tables)
+        {
+            if (table.IsOccupied) continue;
+
+            float distance = Vector3.Distance(position, table.transform.position);
+            if (distance < shortestDistance)
+            {
+                shortestDistance = distance;
+                closest = table;
+            }
+        }
+
+        if (closest != null)
+            closest.Assign();
+
+        return closest;
+    }
 }

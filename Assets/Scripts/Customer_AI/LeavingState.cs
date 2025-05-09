@@ -14,17 +14,30 @@ public class LeavingState : States
 
     public override void OnEnter()
     {
-        _elf.elfChat?.text.gameObject.SetActive(true);
         _elf.StartCoroutine(_elf.ExitBar());
-        Debug.Log("asdasda");
         _elf.assignedTable = null;
         _table.Release();
-        _elf.elfChat.Chat();
+        if (_elf.countGood == 2)
+        {
+            _elf.elfChat?.text.gameObject.SetActive(true);
+            _elf.elfChat?.Chat();
+
+        }
+
+        if (_elf.tolerance <= 0)
+        {
+            _fsm.ChangeState(StatesEnum.Chaos);
+
+        }
+        else 
+        {
+            _elf.StartCoroutine(_elf.NotExit());
+        }
     }
 
     public override void OnExit()
     {
-        _elf.elfChat.text.gameObject.SetActive(false);
+        _elf.elfChat?.text.gameObject.SetActive(false);
     }
 
     public override void OnUpdate()
