@@ -14,21 +14,24 @@ public class Elf : ClientBase
     private bool isMoving = false;
     private Vector3 targetPosition;
     private Vector3 targetPositionExit;
-    private Image img;
+    [HideInInspector]
+    public Image img;
     public Image globe;
     private Order _order;
     [SerializeField]
     List<Image> _orders;
+    public Table table;
 
     public GameObject beer;
 
     private void Start()
     {
+         table = TableManager.instance.GetRandomAvailableTable();
         _fsmClient = new FSMClient();
-        _fsmClient.AddState(StatesEnum.Spawn, new SpawnState(this));
+        _fsmClient.AddState(StatesEnum.Spawn, new SpawnState(this, table));
         _fsmClient.AddState(StatesEnum.Waiting, new WaitingState(this));
         _fsmClient.AddState(StatesEnum.Consuming, new ConsumingState(this));
-        _fsmClient.AddState(StatesEnum.Leaving, new LeavingState(this));
+        _fsmClient.AddState(StatesEnum.Leaving, new LeavingState(this, table));
         _fsmClient.ChangeState(StatesEnum.Spawn);
         _order = new Order(_orders, transform, this);
         globe.gameObject.SetActive(false);
@@ -45,6 +48,7 @@ public class Elf : ClientBase
     {
         targetPosition = table.transform.position;
         isMoving = true;
+        
     }
 
     public void MoveToTarget()
@@ -122,6 +126,7 @@ public class Elf : ClientBase
 
         Debug.Log("elfo salio del bar");
         gameObject.SetActive(false);
+        _fsmClient.ChangeState(StatesEnum.Spawn);
 
     }
 

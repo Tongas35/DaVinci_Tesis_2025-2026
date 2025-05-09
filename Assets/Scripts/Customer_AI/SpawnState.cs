@@ -10,24 +10,24 @@ public class SpawnState : States
 
 
 
-    public SpawnState(Elf client)
+    public SpawnState(Elf client, Table table)
     {
 
        
         _client = client;
-        
+        _client.table = table;
 
 
     }
 
     public override void OnEnter()
     {
-        Table table = TableManager.instance.GetRandomAvailableTable();
+        //Table table = TableManager.instance.GetRandomAvailableTable();
 
-        if (table != null)
+        if (_client.table != null)
         {
-            _client.assignedTable = table;
-            _client.GoToTable(table); // metodo para mover al cliente
+            _client.assignedTable = _client.table;
+            _client.GoToTable(_client.table); // metodo para mover al cliente
         }
         else
         {

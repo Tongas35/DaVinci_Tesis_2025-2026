@@ -65,7 +65,7 @@ public class PlayerDeckManager : MonoBehaviour
         Card c = drawPile[0];
         drawPile.RemoveAt(0);
         hand.Add(c);
-        HandManager.Instance.MoveToNextSlot(c);
+        //HandManager.Instance.MoveToNextSlot(c);
     }
 
     // Retira cartas de la mano

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class HandManager
@@ -9,6 +10,7 @@ public class HandManager
     private readonly Dictionary<int, Transform> _occupiedSlots;
     private const float MaxDistance = 5f;
     private int availableSlot;
+    private Vector3 discartPosition = new (0,0,0);
     public static HandManager Instance
     {
         get
@@ -68,7 +70,7 @@ public class HandManager
         if (_occupiedSlots.Count >= _slots.Count)
         {
 
-            return;
+            card.transform.position = discartPosition;
         }
 
         availableSlot = ReserveAvailableSlot(card.transform);

@@ -12,6 +12,7 @@ public class ConsumingState : States
     public override void OnEnter()
     {
         _client.globe.gameObject.SetActive(false);
+        _client.img.gameObject.SetActive(false);
         _fsm.ChangeState(StatesEnum.Leaving); 
     }
 

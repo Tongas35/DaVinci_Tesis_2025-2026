@@ -46,6 +46,7 @@ public class Card : MonoBehaviour
 
         originalPosition = transform.position;
         originalRotation = transform.rotation;
+
     }
 
     void OnMouseUp()
@@ -72,7 +73,7 @@ public class Card : MonoBehaviour
                 TableID id = targetElf.assignedTable._tableID;      // expongo TableID en Table
                 TransformAndRotation slot = GetTransformAndRotationFor(id);
 
-                Debug.Log(id.Serialize());
+                //Debug.Log(id.Serialize());
 
                 // 3) Comprobamos umbral de proximidad
                 float threshold = 5f;
@@ -100,10 +101,6 @@ public class Card : MonoBehaviour
             }
 
         }
-        else if (currentPosition == Position.Spawn)
-        {
-            HandManager.Instance.MoveToNextSlot(this);
-        }
         else 
         {
 
@@ -120,7 +117,7 @@ public class Card : MonoBehaviour
 
     void OnMouseDrag()
     {
-        if (currentPosition == Position.Hand && HandManager.Instance.CheckAndFreeSlots() == 0)
+        if (currentPosition == Position.Hand)
             _dragAndDrop.OnMouseDragCard();
     }
 
