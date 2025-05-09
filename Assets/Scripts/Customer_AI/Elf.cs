@@ -7,7 +7,7 @@ public class Elf : ClientBase
 {
     private Distance<Table> _tableOrder;
     private List<Table> _tables;
-
+    public ElfChat elfChat;
     [HideInInspector]
     public Table assignedTable;
     FSMClient _fsmClient;
@@ -20,6 +20,7 @@ public class Elf : ClientBase
     private Order _order;
     [SerializeField]
     List<Image> _orders;
+    [HideInInspector]
     public Table table;
 
     public GameObject beer;

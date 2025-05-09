@@ -32,7 +32,7 @@ public class Order
     public void OrderAction(Image orderActive, Card card, GameObject beer)
     {
 
-
+       
 
         if (card.transform.rotation == Quaternion.identity) 
         {
@@ -62,6 +62,7 @@ public class Order
             _coroutine = _context.StartCoroutine(Used(card));
             card.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         }
+            
     }
 
     private IEnumerator Used(Card card)
